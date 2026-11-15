@@ -6,53 +6,129 @@
 <title>✦ Armario de Señas LSC ✦</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Rubik+Bubbles&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#4a1f63;--pk:#ff8fd1;--lil:#b79cff;--pale:#ffe9f7;--lit:#fff;--dk:#a870c4}
+:root{--ink:#2f3519;--pk:#E598B8;--lil:#F2B5CF;--pale:#F4F1E1;--lit:#fff;--dk:#9a9a6a;--ol:#8B9A46;--old:#4b5521;--cr:#F4F1E1;--cr2:#E9E4CE;--pk2:#E598B8;--pk3:#F2B5CF;--yl:#FFF1A8}
 *{box-sizing:border-box}
-body{margin:0;font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background-color:#ffd6f0;
+body{margin:0;font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background-color:#d9f0ff;
  background-image:linear-gradient(#ffffff80 1px,transparent 1px),linear-gradient(90deg,#ffffff80 1px,transparent 1px);background-size:18px 18px;min-height:100vh}
 h1,h2,h3,.bub{font-family:'Rubik Bubbles',Montserrat,sans-serif;font-weight:400}
 .wrap{max-width:1000px;margin:0 auto;padding:14px}
-.win{background:var(--pale);border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;box-shadow:5px 5px 0 #8f62b0;margin-bottom:16px}
+.win{background:var(--pale);border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;box-shadow:5px 5px 0 #7f94b8;margin-bottom:16px}
 .tb{background:linear-gradient(90deg,var(--pk),var(--lil));color:#fff;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;font-weight:800;text-shadow:1px 1px 0 var(--ink)}
 .tb i{font-style:normal;display:flex;gap:4px}.tb i b{background:var(--pale);color:var(--ink);width:18px;height:18px;font-size:11px;text-align:center;border:2px outset #fff;text-shadow:none}
 .body{padding:14px}
-.bv{background:#ffe3f4;color:var(--ink);font:800 .9rem Montserrat,sans-serif;padding:8px 14px;border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;cursor:pointer}
-.bv:active,.bv.on{border-color:var(--dk) #fff #fff var(--dk);background:#e9d6ff}
+.bv{background:#eaf7ff;color:var(--ink);font:800 .9rem Montserrat,sans-serif;padding:8px 14px;border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;cursor:pointer}
+.bv:active,.bv.on{border-color:var(--dk) #fff #fff var(--dk);background:#cfe9ff}
 .bv:disabled{opacity:.5;cursor:not-allowed}
-.go{background:linear-gradient(#ff9ee0,#c9a6ff);font-size:1.05rem;padding:10px 20px}
+.go{background:linear-gradient(#a9ecd0,#8fd3ff);font-size:1.05rem;padding:10px 20px}
 button:focus-visible{outline:3px dashed var(--ink);outline-offset:2px}
 .screen{display:none}.screen.on{display:block;animation:pop .3s}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 .card{background:#fff;border:3px solid;border-color:var(--dk) #fff #fff var(--dk);padding:8px;text-align:center}
-.card img,.opt img{width:100%;aspect-ratio:0.56;object-fit:cover;background:#f3e6ff;display:block;image-rendering:auto}
+.card img,.opt img{width:100%;aspect-ratio:0.56;object-fit:cover;background:#eaf4ff;display:block;image-rendering:auto}
 .sw{display:inline-block;width:26px;height:26px;border:3px solid var(--ink);vertical-align:middle}
-.canvas{background:#fff;background-image:linear-gradient(#f0e0ff 1px,transparent 1px),linear-gradient(90deg,#f0e0ff 1px,transparent 1px);background-size:14px 14px;border:3px solid;border-color:var(--dk) #fff #fff var(--dk);position:relative;overflow:hidden}
+.canvas{background:#fff;background-image:linear-gradient(#e0eefc 1px,transparent 1px),linear-gradient(90deg,#e0eefc 1px,transparent 1px);background-size:14px 14px;border:3px solid;border-color:var(--dk) #fff #fff var(--dk);position:relative;overflow:hidden}
 .paint{display:grid;grid-template-columns:190px 1fr;gap:10px}
 @media(max-width:700px){.paint{grid-template-columns:1fr}.tools{flex-direction:row!important;flex-wrap:wrap}}
 .tools{display:flex;flex-direction:column;gap:8px}
 .tool{display:flex;align-items:center;gap:8px;text-align:left;width:100%}
 .tool[disabled]{background:#c9f7dd;opacity:1}
-.sil{fill:#ff8fd133;stroke:#ff4fb8;stroke-width:3;stroke-dasharray:6 5;cursor:pointer;animation:glow 1.4s infinite}
-.worn{stroke:#4a1f63;stroke-width:3;animation:drop .5s cubic-bezier(.3,1.6,.5,1)}
+.sil{fill:#7fd0ff33;stroke:#ff7f6e;stroke-width:3;stroke-dasharray:6 5;cursor:pointer;animation:glow 1.4s infinite}
+.worn{stroke:#27304f;stroke-width:3;animation:drop .5s cubic-bezier(.3,1.6,.5,1)}
 .pal{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;align-items:center}
 .pal span{width:26px;height:26px;border:2px solid var(--ink);display:grid;place-items:center;font-size:13px;opacity:.55}
-.pal span.hit{opacity:1;outline:3px solid #ff4fb8;outline-offset:1px}
+.pal span.hit{opacity:1;outline:3px solid #ff7f6e;outline-offset:1px}
 .opt{background:#fff;border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;padding:6px;cursor:pointer;font:800 .9rem Montserrat;color:var(--ink)}
 .opt.ok{background:#c9f7dd;animation:pop .3s}.opt.bad{background:#ffd0dc;animation:shake .4s}
-.ov{position:fixed;inset:0;background:#4a1f6399;display:none;align-items:center;justify-content:center;padding:12px;z-index:50}
+.ov{position:fixed;inset:0;background:#27304f99;display:none;align-items:center;justify-content:center;padding:12px;z-index:50}
 .ov.on{display:flex}
-.star{position:absolute;pointer-events:none;animation:fly 1s ease-out forwards;color:#ff4fb8;font-size:22px;z-index:5}
+.star{position:absolute;pointer-events:none;animation:fly 1s ease-out forwards;color:#ff7f6e;font-size:22px;z-index:5}
 @keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
 @keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
-@keyframes glow{50%{fill:#ff8fd166}}
+@keyframes glow{50%{fill:#7fd0ff66}}
 @keyframes drop{from{opacity:0;transform:translateY(-26px)}to{opacity:1;transform:none}}
 @keyframes fly{to{transform:translate(var(--x),var(--y)) rotate(200deg);opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+body{background:radial-gradient(circle,#fff9 0 2px,transparent 3px) 0 0/34px 34px,linear-gradient(135deg,#d9f0ff 25%,#fff6dc 25% 50%,#d9f0ff 50% 75%,#fff6dc 75%) 0 0/56px 56px}
+.wrap{padding-bottom:64px;position:relative;z-index:1}
+svg image{image-rendering:pixelated}
+.menu{display:flex;gap:2px;background:#e6f6ee;border-bottom:2px solid var(--dk);padding:2px 6px}
+.menu button{background:none;border:0;font:700 .85rem Montserrat;padding:3px 10px;cursor:pointer;color:var(--ink)}
+.menu button:hover{background:var(--lil);color:#fff}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:#eaf4ff;padding:4px;border:2px inset #fff}
+.tg button{font-size:1.1rem;padding:3px;background:#eaf7ff;border:2px solid;border-color:#fff var(--dk) var(--dk) #fff;cursor:pointer}
+.tg button:active{border-color:var(--dk) #fff #fff var(--dk)}
+.taskbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;align-items:center;padding:5px 10px;background:linear-gradient(#bfe6ff,#a9ecd0);border-top:3px solid #fff;font-weight:800}
+.pbar{flex:1;max-width:260px;height:18px;border:2px inset #fff;background:#fff;padding:1px}
+.pbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,#ff7f6e 0 10px,transparent 10px 12px);transition:width .4s}
+.stk{position:fixed;font-size:26px;z-index:0;animation:fl 4s ease-in-out infinite;pointer-events:none;opacity:.8}
+@keyframes fl{50%{transform:translateY(-14px) rotate(12deg)}}
+.flip{perspective:900px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:center}
+.fi{position:relative;display:block;transform-style:preserve-3d;transition:transform .6s}
+.flip.on .fi{transform:rotateY(180deg)}
+.ff,.fb{backface-visibility:hidden;-webkit-backface-visibility:hidden;display:block}
+.fb{position:absolute;inset:0;transform:rotateY(180deg);display:flex;flex-direction:column;gap:6px}
+.fb img{flex:1;min-height:0;aspect-ratio:auto;height:100%}
+.ff small{display:block;opacity:.6;font-size:.7rem}
+.tb{color:var(--ink);text-shadow:none}
+.win.a1 .tb{background:linear-gradient(90deg,#ffd98a,#ffb8a8)}
+.win.a2 .tb{background:linear-gradient(90deg,#a6e8c8,#fff1a8)}
+.win.a3 .tb{background:linear-gradient(90deg,#c9d4ff,#7fd0ff)}
+.tool{background:#d7ebff}
+.canvas{background-color:#e9f6ff}#cv{background:#d4f1e4}
+img.stk{width:36px;height:auto;image-rendering:pixelated}
+.star img{image-rendering:pixelated;display:block}
+body{background:linear-gradient(#ffffff80 1px,transparent 1px) 0 0/18px 18px,linear-gradient(90deg,#ffffff80 1px,transparent 1px) 0 0/18px 18px,#ffd6f0}
+@media(max-width:560px){.hide-sm{display:none}}
+
+/* ===== Paleta v2: ventana crema + verde oliva + rosado pastel (según imagen de referencia) ===== */
+.win{background:var(--cr);border:2px solid var(--old);box-shadow:5px 5px 0 #4b552140}
+.win .tb,.win.a1 .tb,.win.a2 .tb,.win.a3 .tb{background:linear-gradient(90deg,#8B9A46,#93A252);color:#FFFDF0;text-shadow:1px 1px 0 #4b552180;border-bottom:2px solid var(--old)}
+.tb i b{background:var(--cr);color:var(--old);border:2px solid var(--old);box-shadow:inset 1px 1px 0 #fff,inset -1px -1px 0 #c9c4a6;text-shadow:none}
+.menu{background:var(--cr2);border-bottom:2px solid var(--old)}
+.menu button:hover,.menu button:focus-visible{background:var(--pk3);color:var(--old)}
+.bv{background:var(--cr2);color:var(--ink)}
+.bv:active,.bv.on{background:var(--pk3)}
+.go{background:linear-gradient(#FFF6BF,#FBE27A)}
+.card,.opt{background:#FFFDF3}
+.card img,.opt img{background:var(--cr)}
+.opt.ok{background:#DDE6B0}.opt.bad{background:#F7C9DB}
+.canvas{background-color:var(--cr);background-image:linear-gradient(#e3dec4 1px,transparent 1px),linear-gradient(90deg,#e3dec4 1px,transparent 1px);border-color:var(--old) #fff #fff var(--old)}
+#cv{background:#F6EFD2}
+.tool{background:var(--cr2)}
+.tool[disabled]{background:#E2E8BC;color:var(--ink)}
+.tg{background:var(--cr2)}.tg button{background:var(--cr)}
+.sil{fill:#E598B833;stroke:#8B9A46}
+@keyframes glow{50%{fill:#E598B866}}
+.pal span.hit{outline-color:var(--pk2)}
+.pbar{background:var(--cr);border:2px solid var(--old)}
+.pbar i{background:repeating-linear-gradient(90deg,var(--pk2) 0 10px,transparent 10px 12px)}
+.taskbar{background:linear-gradient(var(--cr),var(--cr2));border-top:3px solid var(--old)}
+.ov{background:#2f351999}
+*{scrollbar-color:#E598B8 #F4F1E1}
+::-webkit-scrollbar{width:16px;height:16px}
+::-webkit-scrollbar-track{background:var(--cr);border-left:2px solid var(--old)}
+::-webkit-scrollbar-thumb{background:var(--pk2);border:2px solid var(--old)}
+
+/* ===== Arrastrar y soltar ===== */
+.hint{margin:-4px 0 12px;font-weight:800;font-size:.85rem;color:var(--old);background:var(--yl);border:2px dashed var(--ol);padding:6px 10px}
+.tool.unl{background:linear-gradient(#FFF6BF,#FFE77A);border:3px solid var(--ol);cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none;animation:shine 1.2s ease-in-out infinite;box-shadow:0 0 0 2px #fff,0 0 14px 3px #f6e27a}
+.tool.unl:active{cursor:grabbing}
+.tool.unl small{font-weight:800;color:var(--old)}
+@keyframes shine{50%{box-shadow:0 0 0 2px #fff,0 0 22px 7px #f6e27a}}
+#dz{position:relative;height:100%;aspect-ratio:1/2;max-width:100%;margin:0 auto;border-radius:14px;transition:background .15s}
+#dz.arm{outline:3px dashed #8B9A4699;outline-offset:-3px}
+#dz.hot{outline:3px dashed var(--ol);outline-offset:-3px;background:#fff3b066;box-shadow:0 0 0 4px #fff3b0,0 0 22px 8px #f6e27acc;animation:hot 1s infinite}
+@keyframes hot{50%{box-shadow:0 0 0 4px #fff3b0,0 0 32px 12px #f6e27a}}
+.sil.ready{fill:#8B9A4640;stroke:#8B9A46;cursor:default;animation:none}
+svg image.fresh{animation:drop .5s cubic-bezier(.3,1.6,.5,1)}
+.ghost{position:fixed;left:0;top:0;z-index:70;pointer-events:none;background:#FFF1A8;border:3px solid var(--ol);padding:8px 12px;font:800 .9rem Montserrat,sans-serif;color:var(--ink);box-shadow:0 0 16px 4px #f6e27a;opacity:.95}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="win"><div class="tb"><span>✦ ArmarioDeSeñas ✦</span><i><b>_</b><b>□</b><b>x</b></i></div>
+    <div class="menu" role="menubar"><button onclick="resetGame()">Archivo</button><button onclick="show(2)">Edición</button><button onclick="show(1)">Ver</button><button onclick="helpPop()">Ayuda</button></div>
     <div class="body flex" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
       <h1 class="bub" style="font-size:2rem;margin:0">★ Armario de Señas ★</h1>
       <nav style="display:flex;gap:6px;flex-wrap:wrap">
@@ -66,6 +142,7 @@ button:focus-visible{outline:3px dashed var(--ink);outline-offset:2px}
   </div>
   <main><section id="s1" class="screen"></section><section id="s2" class="screen"></section><section id="s3" class="screen"></section><section id="s4" class="screen"></section></main>
 </div>
+<div class="taskbar"><button class="bv go" onclick="helpPop()">★ Inicio</button><span id="tbtxt"></span><div class="pbar" title="Progreso"><i id="pg"></i></div><span id="clk" style="margin-left:auto"></span></div>
 <div id="ov" class="ov"></div>
 
 <script>
@@ -97,19 +174,19 @@ const VOCABULARIO_LSC = [
   {id:'zapatos',  es:'Zapatos',  cat:'prenda', slot:'shoes',  for:'u', icon:'👞', gif:'gifs/zapatos.gif'},
   {id:'zapatos-tenis', es:'Zapatos tenis',    cat:'prenda', slot:'shoes', for:'u', icon:'👟', gif:'gifs/zapatos-tenis.gif'},
   {id:'zapatos-tacon', es:'Zapatos de tacón', cat:'prenda', slot:'shoes', for:'f', icon:'👠', gif:'gifs/zapatos-tacon.gif'},
-  // ---------- PRENDAS (solo glosario) ----------
-  {id:'brassier',     es:'Brassier',     cat:'prenda', icon:'👙', gif:'gifs/brassier.gif'},
-  {id:'calzones',     es:'Calzones',     cat:'prenda', icon:'🩲', gif:'gifs/calzones.gif'},
-  {id:'correa',       es:'Correa',       cat:'prenda', icon:'➰', gif:'gifs/correa.gif'},
-  {id:'guantes',      es:'Guantes',      cat:'prenda', icon:'🧤', gif:'gifs/guantes.gif'},
-  {id:'medias',       es:'Medias',       cat:'prenda', icon:'🧦', gif:'gifs/medias.gif'},
-  {id:'pantaloncillo',es:'Pantaloncillo',cat:'prenda', icon:'🩳', gif:'gifs/pantaloncillo.gif'},
-  {id:'pantuflas',    es:'Pantuflas',    cat:'prenda', icon:'🥿', gif:'gifs/pantuflas.gif'},
-  {id:'piyama',       es:'Piyama',       cat:'prenda', icon:'🛌', gif:'gifs/piyama.gif'},
-  {id:'ruana',        es:'Ruana',        cat:'prenda', icon:'🧣', gif:'gifs/ruana.gif'},
-  {id:'saco',         es:'Saco',         cat:'prenda', icon:'🧶', gif:'gifs/saco.gif'},
-  {id:'sudadera',     es:'Sudadera',     cat:'prenda', icon:'🏃', gif:'gifs/sudadera.gif'},
-  // ---------- COLORES (se usan en misiones) ----------
+  // ---------- PRENDAS (vestibles, continuación) ----------
+  {id:'brassier',  es:'Brassier',  cat:'prenda', slot:'bra',    for:'f', icon:'👙', gif:'gifs/brassier.gif'},
+  {id:'calzones',  es:'Calzones',  cat:'prenda', slot:'brief',  for:'m', icon:'🩲', gif:'gifs/calzones.gif'},
+  {id:'correa',    es:'Correa',    cat:'prenda', slot:'belt',   for:'m', icon:'➰', gif:'gifs/correa.gif'},
+  {id:'guantes',   es:'Guantes',   cat:'prenda', slot:'hands',  for:'u', icon:'🧤', gif:'gifs/guantes.gif'},
+  {id:'medias',    es:'Medias',    cat:'prenda', slot:'socks',  for:'u', icon:'🧦', gif:'gifs/medias.gif'},
+  {id:'pantaloncillo', es:'Pantaloncillo', cat:'prenda', slot:'bottom', for:'u', icon:'🩳', gif:'gifs/pantaloncillo.gif'},
+  {id:'pantuflas', es:'Pantuflas', cat:'prenda', slot:'shoes',  for:'u', icon:'🥿', gif:'gifs/pantuflas.gif'},
+  {id:'piyama',    es:'Piyama',    cat:'prenda', slot:'full',   for:'u', icon:'🛌', gif:'gifs/piyama.gif'},
+  {id:'ruana',     es:'Ruana',     cat:'prenda', slot:'jacket', for:'u', icon:'🧣', gif:'gifs/ruana.gif'},
+  {id:'saco',      es:'Saco',      cat:'prenda', slot:'jacket', for:'u', icon:'🧶', gif:'gifs/saco.gif'},
+  {id:'sudadera',  es:'Sudadera',  cat:'prenda', slot:'top',    for:'u', icon:'🏃', gif:'gifs/sudadera.gif'},
+    // ---------- COLORES (se usan en misiones) ----------
   {id:'amarillo',  es:'Amarillo',  cat:'color', hex:'#FFD93B', gif:'gifs/amarillo.gif'},
   {id:'anaranjado',es:'Anaranjado',cat:'color', hex:'#FF8A2B', gif:'gifs/anaranjado.gif'},
   {id:'azul',      es:'Azul',      cat:'color', hex:'#4C8DFF', gif:'gifs/azul.gif'},
@@ -132,21 +209,39 @@ const VOCABULARIO_LSC = [
   {id:'transparente',es:'Transparente',cat:'extra', icon:'🫧', gif:'gifs/transparente.gif'},
 ];
 
-/* MISIONES — for: 'u' (ambos) · 'f' (mujer) · 'm' (hombre).  items: prenda + color (ids de arriba) */
+/* MISIONES — for: 'u' (ambos) · 'f' (mujer) · 'm' (hombre).  items: g = prenda, c = color, m = tono opcional ('claro' | 'oscuro') → con m el reto tiene un 3er paso */
 const MISIONES = [
-  {for:'u', title:'Viste al modelo con camisa verde, jean azul y zapatos rojos',
-   items:[{g:'camisa',c:'verde'},{g:'pantalon',c:'azul'},{g:'zapatos',c:'rojo'}]},
-  {for:'u', title:'Día deportivo: camiseta anaranjada, pantalón café y zapatos tenis blancos',
-   items:[{g:'camiseta',c:'anaranjado'},{g:'pantalon',c:'cafe'},{g:'zapatos-tenis',c:'blanco'}]},
-  {for:'f', title:'Viste a la modelo con vestido rosado, zapatos de tacón morados y sombrero amarillo',
-   items:[{g:'vestido',c:'rosado'},{g:'zapatos-tacon',c:'morado'},{g:'sombrero',c:'amarillo'}]},
-  {for:'f', title:'Look de fiesta: blusa amarilla, falda morada y chaqueta negra',
-   items:[{g:'blusa',c:'amarillo'},{g:'falda',c:'morado'},{g:'chaqueta',c:'negro'}]},
-  {for:'m', title:'Look de oficina: camisa blanca, corbata roja, pantalón negro y chaqueta gris',
-   items:[{g:'camisa',c:'blanco'},{g:'corbata',c:'rojo'},{g:'pantalon',c:'negro'},{g:'chaqueta',c:'gris'}]},
+  // ----- MODELO MUJER (f) -----
+  {for:'f', title:'Paseo en el parque: blusa rosada, pantalón azul claro y zapatos tenis blancos',
+   items:[{g:'blusa',c:'rosado'},{g:'pantalon',c:'azul',m:'claro'},{g:'zapatos-tenis',c:'blanco'}]},
+  {for:'f', title:'Fiesta de gala: vestido rojo, guantes blancos, zapatos de tacón negros y sombrero morado claro',
+   items:[{g:'vestido',c:'rojo'},{g:'guantes',c:'blanco'},{g:'zapatos-tacon',c:'negro'},{g:'sombrero',c:'morado',m:'claro'}]},
+  {for:'f', title:'Cumpleaños: blusa verde, falda azul oscuro, chaqueta negra y medias blancas',
+   items:[{g:'blusa',c:'verde'},{g:'falda',c:'azul',m:'oscuro'},{g:'chaqueta',c:'negro'},{g:'medias',c:'blanco'}]},
+  {for:'f', title:'Gimnasio: brassier negro, pantaloncillo gris, medias blancas y zapatos tenis rosados',
+   items:[{g:'brassier',c:'negro'},{g:'pantaloncillo',c:'gris'},{g:'medias',c:'blanco'},{g:'zapatos-tenis',c:'rosado'}]},
+  {for:'f', title:'Tarde fría: ruana café claro, pantalón negro, guantes grises y zapatos verde oscuro',
+   items:[{g:'ruana',c:'cafe',m:'claro'},{g:'pantalon',c:'negro'},{g:'guantes',c:'gris'},{g:'zapatos',c:'verde',m:'oscuro'}]},
+  {for:'f', title:'Pijamada: piyama rosada clara, saco morado y pantuflas grises',
+   items:[{g:'piyama',c:'rosado',m:'claro'},{g:'saco',c:'morado'},{g:'pantuflas',c:'gris'}]},
+  // ----- MODELO HOMBRE (m) -----
+  {for:'m', title:'Oficina: camisa blanca, corbata azul oscuro, pantalón gris, correa y zapatos negros',
+   items:[{g:'camisa',c:'blanco'},{g:'corbata',c:'azul',m:'oscuro'},{g:'pantalon',c:'gris'},{g:'correa',c:'negro'},{g:'zapatos',c:'negro'}]},
+  {for:'m', title:'Deportivo: camiseta anaranjada, pantaloncillo azul, medias blancas y zapatos tenis rojos',
+   items:[{g:'camiseta',c:'anaranjado'},{g:'pantaloncillo',c:'azul'},{g:'medias',c:'blanco'},{g:'zapatos-tenis',c:'rojo'}]},
+  {for:'m', title:'Montaña: ruana café, pantalón azul oscuro, sombrero negro y guantes grises',
+   items:[{g:'ruana',c:'cafe'},{g:'pantalon',c:'azul',m:'oscuro'},{g:'sombrero',c:'negro'},{g:'guantes',c:'gris'}]},
+  {for:'m', title:'En casa: calzones azul claro, camiseta blanca, medias grises y pantuflas negras',
+   items:[{g:'calzones',c:'azul',m:'claro'},{g:'camiseta',c:'blanco'},{g:'medias',c:'gris'},{g:'pantuflas',c:'negro'}]},
+  {for:'m', title:'Día frío: sudadera gris oscuro, pantalón café claro, sombrero amarillo y zapatos café oscuro',
+   items:[{g:'sudadera',c:'gris',m:'oscuro'},{g:'pantalon',c:'cafe',m:'claro'},{g:'sombrero',c:'amarillo'},{g:'zapatos',c:'cafe',m:'oscuro'}]},
+  {for:'m', title:'Casual: saco verde oscuro, camiseta amarilla, pantalón negro y zapatos rojos',
+   items:[{g:'saco',c:'verde',m:'oscuro'},{g:'camiseta',c:'amarillo'},{g:'pantalon',c:'negro'},{g:'zapatos',c:'rojo'}]},
 ];
 
 // Si es true, las tarjetas de opciones muestran la palabra (da la respuesta). Si false: "Opción A/B/C".
+// RONDA BONUS: conceptos que NO son prendas (se evalúan intercalando GIF→texto y texto→GIF)
+const BONUS_IDS = ['colorear', 'brillante', 'colores', 'rubio', 'palido', 'transparente'];
 const MOSTRAR_PALABRA = false;
 
 /* =====================================================================
@@ -157,11 +252,26 @@ const V = id => VOCABULARIO_LSC.find(x => x.id === id);
 const cat = c => VOCABULARIO_LSC.filter(x => x.cat === c);
 const shuffle = a => [...a].sort(() => Math.random() - .5);
 const ph = file => 'data:image/svg+xml;utf8,' + encodeURIComponent(
- `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#f3e6ff"/><rect x="8" y="8" width="184" height="184" fill="none" stroke="#ff8fd1" stroke-width="4" stroke-dasharray="8 6"/><text x="100" y="95" font-size="54" text-anchor="middle">🤟</text><text x="100" y="135" font-size="13" font-family="Montserrat,sans-serif" font-weight="800" text-anchor="middle" fill="#4a1f63">Falta el GIF:</text><text x="100" y="155" font-size="13" font-family="monospace" text-anchor="middle" fill="#a0359b">${file}</text></svg>`);
+ `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#eaf4ff"/><rect x="8" y="8" width="184" height="184" fill="none" stroke="#7fd0ff" stroke-width="4" stroke-dasharray="8 6"/><text x="100" y="95" font-size="54" text-anchor="middle">🤟</text><text x="100" y="135" font-size="13" font-family="Montserrat,sans-serif" font-weight="800" text-anchor="middle" fill="#27304f">Falta el GIF:</text><text x="100" y="155" font-size="13" font-family="monospace" text-anchor="middle" fill="#2a6fb5">${file}</text></svg>`);
 const img = (o, alt) => `<img src="${o.gif}" alt="${alt || 'Seña en LSC: ' + o.es}" onerror="this.onerror=null;this.src=ph('${o.gif}')">`;
-const win = (title, body) => `<div class="win"><div class="tb"><span>✦ ${title}</span><i><b>_</b><b>□</b><b>x</b></i></div><div class="body">${body}</div></div>`;
+const win = (title, body) => `<div class="win ${['','a1','a2','a3'][title.length % 4]}"><div class="tb"><span>✦ ${title}</span><i><b>_</b><b>□</b><b>x</b></i></div><div class="body">${body}</div></div>`;
 
-const S = {g:'f', mi:0, done:[], tab:'prenda', q:null, cleared:new Set(), stars:0, bonus:null};
+const hx = h => [1,3,5].map(i => parseInt(h.slice(i, i + 2), 16));
+const mixc = (c, t, a) => '#' + c.map((v, i) => Math.round(v + (t[i] - v) * a).toString(16).padStart(2, '0')).join('');
+const tone = (h, m) => m === 'claro' ? mixc(hx(h), [255,255,255], .4) : m === 'oscuro' ? mixc(hx(h), [20,5,40], .45) : h;
+const colHex = it => tone(V(it.c).hex, it.m);
+const itCol = it => V(it.c).es + (it.m ? ' ' + V(it.m).es.toLowerCase() : '');
+const fmsg = (ok, t) => { const r = t ? ok / t : 0;
+  return r >= .9 ? '¡Increíble! Dominas estas señas ✦' : r >= .6 ? '¡Muy bien! Sigue practicando y las dominarás ★' : '¡Buen intento! Repasa el glosario y vuelve a probar, ¡tú puedes! ⋆'; };
+const results = (ok, t) => { const n = t ? Math.round(ok / t * 3) : 0;
+  return `<div class="card" style="padding:12px;margin:10px 0"><div class="bub" style="font-size:1.7rem">Aciertos: ${ok} de ${t}</div>
+    <div style="font-size:1.5rem;letter-spacing:4px" aria-label="${n} de 3 estrellas">${'⭐'.repeat(n)}${'☆'.repeat(3 - n)}</div>
+    <p style="margin:6px 0 0;font-weight:800">${fmsg(ok, t)}</p></div>`; };
+const welcome = () => `<div style="display:flex;gap:14px;align-items:center">
+  <img src="${spr('st', '#ffcf40')}" width="44" height="44" alt="" style="image-rendering:pixelated;flex:none">
+  <p style="margin:0;font-size:1.05rem;font-weight:700;line-height:1.6">¡Bienvenido al Armario de Señas! Explora el glosario para aprender el vocabulario en Lengua de Señas Colombiana (LSC), elige tu personaje y cumple las misiones de estilo eligiendo las señas correctas de cada prenda y color. ¡Supera los retos, viste a tu avatar y diviértete en la Ronda Bonus! </p>
+  <img src="${spr('ht', '#ff7f6e')}" width="44" height="40" alt="" style="image-rendering:pixelated;flex:none" class="hide-sm"></div>`;
+const S = {stat:{ok:0, t:0}, g:'f', mi:0, done:[], tab:'prenda', q:null, cleared:new Set(), stars:0, bonus:null, unl:[], drag:null, fresh:null};
 const missions = () => MISIONES.map((m, i) => ({...m, i})).filter(m => m.for === 'u' || m.for === S.g);
 const setStars = () => $('stars').textContent = '⭐ ' + S.stars;
 
@@ -173,62 +283,154 @@ const SH = {
  camiseta:'M62 122 Q100 112 138 122 L160 160 L142 170 L138 152 L138 250 L62 250 L62 152 L58 170 L40 160 Z',
  blusa:'M62 122 Q100 112 138 122 L166 176 L146 188 L138 164 L142 240 L58 240 L62 164 L54 188 L34 176 Z',
  vestido:'M64 122 Q100 112 136 122 L142 180 L172 340 L28 340 L58 180 Z',
- chaqueta:'M58 120 Q100 108 142 120 L180 202 L156 214 L142 176 L142 262 L58 262 L58 176 L44 214 L20 202 Z M100 116 V262',
+ chaqueta:'M58 120 Q100 108 142 120 L180 202 L156 214 L142 176 L142 262 L58 262 L58 176 L44 214 L20 202 Z',
+ saco:'M60 120 Q100 110 140 120 L170 196 L150 206 L140 176 L140 270 L60 270 L60 176 L50 206 L30 196 Z',
+ sudadera:'M60 120 Q100 106 140 120 L176 200 L152 214 L140 178 L140 262 L60 262 L60 178 L48 214 L24 200 Z M70 114 Q100 84 130 114 Q100 130 70 114 Z',
+ ruana:'M58 120 Q100 108 142 120 L192 240 L100 264 L8 240 Z',
+ piyama:'M62 122 Q100 112 138 122 L172 190 L150 202 L138 172 L138 250 L142 372 L106 372 L100 290 L94 372 L58 372 L62 250 L62 172 L50 202 L28 190 Z',
  pantalon:'M62 248 L138 248 L142 372 L106 372 L100 290 L94 372 L58 372 Z',
+ pantaloncillo:'M62 248 L138 248 L142 308 L104 308 L100 284 L96 308 L58 308 Z',
  falda:'M62 248 L138 248 L168 335 L32 335 Z',
  corbata:'M92 120 L108 120 L106 134 L112 190 L100 204 L88 190 L94 134 Z',
- sombrero:'M30 58 Q100 38 170 58 Q100 76 30 58 Z M62 54 Q64 4 100 4 Q136 4 138 54 Z',
- zapatos:'M46 372 H102 V392 H40 Q40 374 46 372 Z M98 372 H154 Q160 374 160 392 H98 Z',
- 'zapatos-tenis':'M46 372 H102 V392 H38 Q38 374 46 372 Z M98 372 H154 Q162 374 162 392 H98 Z M38 388 H162',
- 'zapatos-tacon':'M52 372 H98 L96 392 H92 L90 384 H52 Z M102 372 H148 L148 384 H110 L108 392 H104 Z',
+ sombrero:'M30 70 Q100 52 170 70 Q100 88 30 70 Z M62 66 Q64 20 100 20 Q136 20 138 66 Z',
+ zapatos:'M66 370 H96 L98 390 H64 Q62 372 66 370 Z M104 370 H134 Q138 372 136 390 H102 Z',
+ 'zapatos-tenis':'M64 364 H96 L98 390 H62 Q60 370 64 364 Z M104 364 H136 Q140 370 138 390 H102 Z',
+ 'zapatos-tacon':'M68 370 H96 L94 382 H72 L70 392 H66 Z M104 370 H132 L134 392 H130 L128 382 H106 Z',
+ pantuflas:'M66 372 H96 Q100 392 80 394 H64 Q62 380 66 372 Z M104 372 H134 Q138 380 136 394 H120 Q100 392 104 372 Z',
+ brassier:'M68 126 Q84 138 100 128 Q116 138 132 126 L132 150 Q116 158 100 150 Q84 158 68 150 Z',
+ calzones:'M62 236 L138 236 L134 262 L106 262 L100 252 L94 262 L66 262 Z',
+ correa:'M62 244 H138 V254 H62 Z M95 241 H105 V257 H95 Z',
+ guantes:'M31 208 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0 Z M147 208 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0 Z',
+ medias:'M68 300 L96 300 L94 370 L68 370 Z M104 300 L132 300 L132 370 L106 370 Z',
 };
-const ORDER = ['bottom','top','full','jacket','neck','shoes','hat'];
-const SKIN = {f:'#FFD6BC', m:'#F0BE98'};
+const HP = {
+ f:'M64 76 Q60 30 100 28 Q140 30 136 76 Q128 50 100 50 Q72 50 64 76 Z M62 62 h12 v50 h-12 Z M126 62 h12 v50 h-12 Z',
+ m:'M66 70 Q64 30 100 28 Q136 30 134 70 Q124 52 112 52 Q104 46 96 54 Q76 48 66 70 Z'};
+const BRAID = 'M58 102 L78 102 L75 200 L62 200 Z M122 102 L142 102 L138 200 L125 200 Z';
+const LEGS = 'M68 248 L97 248 L96 310 L92 372 L74 372 L72 310 Z M72 372 L94 372 L98 388 L68 388 Z M103 248 L132 248 L128 310 L126 372 L108 372 L104 310 Z M106 372 L128 372 L132 388 L102 388 Z';
+const TORSO = {f:'M66 122 L134 122 L124 188 L134 252 L66 252 L76 188 Z M90 100 H110 V124 H90 Z',
+               m:'M62 120 L138 120 L132 190 L134 252 L66 252 L68 190 Z M90 100 H110 V124 H90 Z'};
+const GW = 64, GH = 128, INK = '#24122f', PC = {};
+const FOLD = {vestido:'p',falda:'p',ruana:'p',camisa:'d',camiseta:'d',blusa:'d',chaqueta:'d',saco:'d',sudadera:'d',piyama:'d',pantalon:'d',pantaloncillo:'d'};
+const BTN = ['camisa','saco','piyama','chaqueta'];
+const ORDER = ['socks','bra','brief','bottom','full','top','jacket','belt','neck','hands','shoes','hat'];
+const SKIN = {f:'#ffd9c2', m:'#f0bd96'}, HAIR = {f:'#f1cf6a', m:'#5a3a22'};
 
-function doll(g, worn = {}, pend = []) {
-  const s = SKIN[g], h = g === 'f' ? '#8a3d9e' : '#3b2418', o = '#4a1f63';
-  let x = `<svg viewBox="0 0 200 400" shape-rendering="crispEdges" role="img" aria-label="Modelo ${g === 'f' ? 'mujer' : 'hombre'}" style="width:100%;height:100%">`;
-  if (g === 'f') x += `<rect x="52" y="34" width="96" height="130" rx="14" fill="${h}" stroke="${o}" stroke-width="3"/>`;
-  x += `<g stroke="${o}" stroke-width="3" fill="${s}"><path d="M64 130 L36 196 M136 130 L164 196" stroke="${s}" stroke-width="20" stroke-linecap="square"/>
-   <path d="M82 250 L80 372 M118 250 L120 372" stroke="${s}" stroke-width="26"/>
-   <rect x="64" y="118" width="72" height="134" rx="${g==='f'?22:8}"/><rect x="90" y="100" width="20" height="24"/>
-   <rect x="64" y="236" width="72" height="16" fill="#ffc2e8"/><circle cx="100" cy="70" r="38"/></g>`;
-  x += g === 'f'
-    ? `<path d="M60 74 Q58 28 100 28 Q142 28 140 74 Q130 46 100 46 Q70 46 60 74Z" fill="${h}" stroke="${o}" stroke-width="3"/><path d="M92 90 Q100 98 108 90" stroke="#ff4fb8" stroke-width="5" fill="none"/>`
-    : `<path d="M62 66 Q62 26 100 26 Q138 26 138 66 Q124 44 100 44 Q76 44 62 66Z" fill="${h}" stroke="${o}" stroke-width="3"/><path d="M92 90 Q100 96 108 90" stroke="${o}" stroke-width="4" fill="none"/><path d="M80 64 h14 M106 64 h14" stroke="${o}" stroke-width="4"/>`;
-  x += `<rect x="85" y="71" width="6" height="8" fill="${o}"/><rect x="109" y="71" width="6" height="8" fill="${o}"/>`;
-  [...Object.keys(worn).map(k => ({k, w:1})), ...pend.map(p => ({k:p.g, i:p.i}))]
-   .sort((a, b) => ORDER.indexOf(V(a.k).slot) - ORDER.indexOf(V(b.k).slot))
-   .forEach(e => x += e.w
-     ? `<path d="${SH[e.k]}" fill="${worn[e.k]}" class="worn"/>`
-     : `<path d="${SH[e.k]}" class="sil" onclick="openChallenge(${e.i})"/>`);
+/* Rasteriza cada forma en una cuadrícula de 64x128 y la vuelve pixel art (estilo Dollz):
+   contorno casi negro, luz arriba/izquierda, sombra abajo/derecha, tramado y pliegues. */
+function pix(id, col, draw, fold, post) {
+  const key = id + col; if (PC[key]) return PC[key];
+  const a = document.createElement('canvas'); a.width = GW; a.height = GH;
+  const x = a.getContext('2d', {willReadFrequently:true}); x.scale(GW / 200, GH / 400); draw(x);
+  const d = x.getImageData(0, 0, GW, GH).data, m = (i, j) => i >= 0 && j >= 0 && i < GW && j < GH && d[(j * GW + i) * 4 + 3] > 100;
+  const c = hx(col), dk = mixc(c, [40,30,80], .38), lt = mixc(c, [255,255,255], .42);
+  const b = document.createElement('canvas'); b.width = GW; b.height = GH; const o = b.getContext('2d');
+  const px = (i, j, k) => { o.fillStyle = k; o.fillRect(i, j, 1, 1); };
+  for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
+    if (!m(i, j)) continue; let k = col;
+    if (!m(i-1,j) || !m(i+1,j) || !m(i,j-1) || !m(i,j+1)) k = INK;
+    else if (fold === 'p' && i % 6 === 0 && j > 56) k = dk;
+    else if (fold === 'd' && (i + j * 2) % 17 === 0 && j % 4) k = dk;
+    else if (fold === 's' && i % 4 === 0) k = dk;
+    else if (fold === 'b' && (j + (i % 4 < 2 ? 0 : 2)) % 4 < 2) k = dk;
+    else if (!m(i-2,j) || !m(i,j-2)) k = lt;
+    else if (!m(i+2,j) || !m(i,j+2) || (!m(i+3,j) && (i + j) % 2)) k = dk;
+    px(i, j, k);
+  }
+  if (post) post(px, dk, lt);
+  return PC[key] = b.toDataURL();
+}
+const P2 = d => x => x.fill(new Path2D(d));
+const gpix = (id, hex) => pix(id, hex, P2(SH[id]), FOLD[id],
+  BTN.includes(id) ? (px, dk) => { for (let j = 44; j < 80; j += 6) px(32, j, dk); } : null);
+const armsDraw = x => [[60,126,74,130,50,204,34,198,42,208],[140,126,126,130,150,204,166,198,158,208]].forEach(a => {
+  x.beginPath(); x.moveTo(a[0],a[1]); x.lineTo(a[2],a[3]); x.lineTo(a[4],a[5]); x.lineTo(a[6],a[7]); x.closePath(); x.fill();
+  x.beginPath(); x.arc(a[8], a[9], 9, 0, 7); x.fill(); });
+const headDraw = x => { [[100,74,32],[68,78,7],[132,78,7]].forEach(a => { x.beginPath(); x.arc(a[0], a[1], a[2], 0, 7); x.fill(); }); };
+const faceDraw = g => (px, dk) => {
+  const E = INK, ir = g === 'f' ? '#4aa3df' : '#6b4b2f', mo = g === 'f' ? '#d6336c' : '#b0605a';
+  [26, 36].forEach(i => { for (let k = 0; k < 3; k++) px(i + k, 24, E);
+    px(i, 25, '#fff'); px(i + 1, 25, ir); px(i + 2, 25, '#fff'); px(i + 1, 26, dk); });
+  px(32, 28, dk); px(31, 31, mo); px(32, 31, mo); px(33, 31, mo);
+  if (g === 'f') { px(25, 24, E); px(39, 24, E); px(32, 30, '#ff9bbd'); [25,26,38,39].forEach(i => px(i, 28, '#ff9db8'));
+    [26,27,28,36,37,38].forEach(i => px(i, 22, '#b8913a')); }
+  else [25,26,27,28,29,35,36,37,38,39].forEach(i => px(i, 22, HAIR.m));
+};
+
+// worn: {idPrenda: hex} · pend: [{g, i}] siluetas clicables (selección tipo Paint)
+function doll(g, worn = {}, pend = [], fresh = null) {
+  const im = u => `<image href="${u}" width="200" height="400"/>`, f = g === 'f';
+  let x = `<svg viewBox="0 0 200 400" role="img" aria-label="Modelo ${f ? 'mujer' : 'hombre'}" style="width:100%;height:100%;position:relative">`;
+  if (f) x += im(pix('hb', HAIR.f, c => { c.beginPath(); c.roundRect(46, 40, 108, 150, 26); c.fill(); }, 's'));
+  x += im(pix('legs' + g, SKIN[g], P2(LEGS))) + im(pix('torso' + g, SKIN[g], P2(TORSO[g])))
+    + im(pix('und', '#f4c9d6', c => c.fillRect(66, 240, 68, 12))) + im(pix('arms' + g, SKIN[g], armsDraw))
+    + im(pix('head' + g, SKIN[g], headDraw, '', faceDraw(g))) + im(pix('hair' + g, HAIR[g], P2(HP[g]), 's'));
+  const slot = k => k === '_braid' ? ORDER.indexOf('neck') - .5 : ORDER.indexOf(V(k).slot);
+  [...Object.keys(worn).map(k => ({k, w:1})), ...pend.map(p => ({k:p.g, i:p.i, u:p.u})), ...(f ? [{k:'_braid', w:2}] : [])]
+    .sort((p, q) => slot(p.k) - slot(q.k))
+    .forEach(e => x += e.w === 2 ? im(pix('braid', HAIR.f, P2(BRAID), 'b')) : e.w ? im(gpix(e.k, worn[e.k])).replace('<image', fresh === e.k ? '<image class="fresh"' : '<image')
+      : `<path d="${SH[e.k]}" class="sil${e.u ? ' ready' : ''}"${e.u ? '' : ` onclick="openChallenge(${e.i})"`}/>`);
   return x + '</svg>';
 }
+
+/* ---------- Armario (clóset) abierto: fondo del vestidor ---------- */
+function closet() {
+  const R = (x, y, w, h, f, st = '#5b4636') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" stroke="${st}" stroke-width="3"/>`;
+  const SHP = {shirt:'M-14 0 L-5 -3 L5 -3 L14 0 L12 7 L8 5 L8 44 L-8 44 L-8 5 L-12 7 Z', dress:'M-9 -2 L9 -2 L10 14 L18 58 L-18 58 L-10 14 Z',
+    pants:'M-10 0 L10 0 L11 56 L2 56 L0 22 L-2 56 L-11 56 Z', skirt:'M-10 0 L10 0 L17 40 L-17 40 Z', jacket:'M-15 0 L-5 -3 L5 -3 L15 0 L18 46 L8 46 L8 6 L-8 6 L-8 46 L-18 46 Z'};
+  const hang = [['shirt','#E598B8',98],['dress','#ffe58a',128],['pants','#C9D38A',158],['skirt','#ffb8a8',282],['jacket','#F2B5CF',312],['shirt','#fff6dc',342]];
+  const dr = (pts, inner) => `<polygon points="${pts}" fill="#f7cf94" stroke="#5b4636" stroke-width="3"/><polygon points="${inner}" fill="#ffe3b8" stroke="#8a6a45" stroke-width="2"/>`;
+  return `<svg viewBox="0 0 440 440" aria-hidden="true" shape-rendering="crispEdges" style="position:absolute;inset:0;width:100%;height:100%">
+   <defs><pattern id="ck" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#fff6dc"/><rect width="8" height="8" fill="#f6cfe0"/><rect x="8" y="8" width="8" height="8" fill="#f6cfe0"/></pattern></defs>
+   ${R(60,18,320,414,'#fff1c9')}${R(74,46,292,372,'#FBF1D4','#8a8a5c')}${R(52,18,336,28,'#f0b46e')}
+   ${dr('60,26 16,46 16,414 60,426', '52,60 26,74 26,386 52,398')}${dr('380,26 424,46 424,414 380,426', '388,60 414,74 414,386 388,398')}
+   <circle cx="54" cy="230" r="5" fill="#ffd34d" stroke="#5b4636" stroke-width="2"/><circle cx="386" cy="230" r="5" fill="#ffd34d" stroke="#5b4636" stroke-width="2"/>
+   ${R(84,76,272,7,'#b9c6dd','#6d7c99')}${R(80,70,8,22,'#8f9db8','#6d7c99')}${R(352,70,8,22,'#8f9db8','#6d7c99')}
+   ${hang.map(([k, c, x]) => `<g transform="translate(${x},82)"><path d="M0 0 v-6 q5 -2 5 -8" fill="none" stroke="#6d7c99" stroke-width="2"/><path d="M-13 12 L0 3 L13 12" fill="none" stroke="#6d7c99" stroke-width="2"/><g transform="translate(0,12)"><path d="${SHP[k]}" fill="${c}" stroke="#5b4636" stroke-width="2.5"/></g></g>`).join('')}
+   <rect x="60" y="414" width="320" height="18" fill="url(#ck)" stroke="#5b4636" stroke-width="3"/>
+   <rect x="92" y="396" width="34" height="16" fill="#ff7f6e" stroke="#5b4636" stroke-width="2.5"/><rect x="316" y="396" width="34" height="16" fill="#8B9A46" stroke="#5b4636" stroke-width="2.5"/></svg>`;
+}
+
+/* ---------- Sprites pixel (estrellitas, corazones) ---------- */
+const SPR = {sp:['....#....','...###...','...###...','..#####..','#########','..#####..','...###...','...###...','....#....'],
+  ht:['.###.###.','#########','#########','.#######.','..#####..','...###...','....#....'],
+  st:['....#....','....#....','...###...','#########','.#######.','..#####..','..##.##..','.##...##.','.#.....#.']};
+const SCOL = ['#ffcf40','#5cc8ff','#3dd6a0','#ff7f6e'];
+const spr = (n, c) => { let r = SPR[n], b = ''; r.forEach((row, y) => [...row].forEach((ch, x) => { if (ch === '#') b += `<rect x="${x}" y="${y}" width="1" height="1"/>`; }));
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 ${r.length}" fill="${c}" shape-rendering="crispEdges">${b}</svg>`); };
 
 /* =====================================================================
    NAVEGACIÓN
    ===================================================================== */
 function show(n) {
   [1,2,3,4].forEach(i => { $('s'+i).classList.toggle('on', i === n); $('n'+i).classList.toggle('on', i === n); });
-  $('n4').disabled = S.cleared.size < missions().length;
-  ({1:rLearn, 2:rModel, 3:rGame, 4:rBonus})[n](); setStars();
+  $('n4').disabled = false;
+  ({1:rLearn, 2:rModel, 3:rGame, 4:rBonus})[n](); setStars(); prog();
   scrollTo({top:0, behavior:'smooth'});
 }
 
-/* ---------- Pantalla 1: Aprende ---------- */
+/* ---------- Pantalla 1: Aprende (tarjetas 3D) ----------
+   Frente: seña en GIF (gifs/…).  Reverso: foto/ilustración en  images/<id>.png
+   (o pon una ruta propia con el campo  img:'images/lo-que-sea.png'  en el vocabulario). */
+const imgOf = o => o.img || `images/${o.id}.png`;
+const phI = id => { const o = V(id); return 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="${o.hex || '#eaf7ff'}"/><rect x="8" y="8" width="184" height="184" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="8 6"/><text x="100" y="105" font-size="64" text-anchor="middle">${o.icon || ''}</text><text x="100" y="160" font-size="12" font-family="monospace" text-anchor="middle" fill="#27304f">${imgOf(o)}</text></svg>`); };
 function rLearn() {
   const tabs = {prenda:'Prendas', color:'Colores', extra:'Conceptos extra'};
-  $('s1').innerHTML = win('Glosario_LSC', `
-    <h2 class="bub" style="font-size:1.8rem;margin:0 0 10px">⋆ Aprende las señas ⋆</h2>
+  $('s1').innerHTML = win('¡Bienvenido!', welcome()) + win('Glosario_LSC', `
+    <h2 class="bub" style="font-size:1.8rem;margin:0 0 6px">⋆ Aprende las señas ⋆</h2>
+    <p style="margin:0 0 10px;font-weight:700">Toca una tarjeta para voltearla ✦</p>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">${Object.entries(tabs).map(([k, v]) => `<button class="bv ${S.tab===k?'on':''}" onclick="S.tab='${k}';rLearn()">${v}</button>`).join('')}</div>
-    <div class="grid">${cat(S.tab).map(o => `<article class="card">${img(o)}<div style="margin-top:6px;font-weight:800">
-      ${o.hex ? `<span class="sw" style="background:${o.hex}"></span>` : o.icon} ${o.es}</div></article>`).join('')}</div>
-    <p style="text-align:right;margin:14px 0 0"><button class="bv go" onclick="show(2)">★ Elegir modelo ★</button></p>`);
+    <div class="grid">${cat(S.tab).map(o => `
+      <button class="flip" onclick="this.classList.toggle('on')" aria-label="Voltear tarjeta: ${o.es}"><span class="fi">
+        <span class="ff card">${img(o)}<b style="display:block;margin-top:6px">${o.hex ? `<span class="sw" style="background:${o.hex}"></span>` : o.icon} ${o.es}</b><small>↻ voltear ★</small></span>
+        <span class="fb card"><img src="${imgOf(o)}" alt="Ilustración: ${o.es}" onerror="this.onerror=null;this.src=phI('${o.id}')"><b>${o.es}</b></span>
+      </span></button>`).join('')}</div>
+    <p style="text-align:right;margin:14px 0 0"><button class="bv" onclick="show(4)">⭐ Ronda bonus</button> <button class="bv go" onclick="show(2)">★ Elegir modelo ★</button></p>`);
 }
 
 /* ---------- Pantalla 2: Modelo ---------- */
 function rModel() {
-  $('s2').innerHTML = win('EligeModelo.exe', `
+  $('s2').innerHTML = win('EligeModelo', `
     <h2 class="bub" style="font-size:1.8rem;margin:0 0 10px">✦ Elige tu modelo ✦</h2>
     <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
     ${[['f','Mujer'],['m','Hombre']].map(([g, n]) => `
@@ -239,35 +441,90 @@ function rModel() {
 function pickG(g) { if (S.g !== g) { S.g = g; S.cleared = new Set(); } rModel(); }
 
 /* ---------- Pantalla 3: Armario y misiones ---------- */
-function startMission(k) { S.mi = k; S.done = []; $('ov').classList.remove('on'); show(3); }
+function startMission(k) { S.mi = k; S.done = []; S.unl = []; S.stat = {ok:0, t:0}; $('ov').classList.remove('on'); show(3); }
 
-function rGame() {
+function rGame() { setTimeout(prog);
   const m = missions()[S.mi], worn = {}, pend = [];
-  m.items.forEach((it, i) => S.done[i] ? worn[it.g] = V(it.c).hex : pend.push({g:it.g, i}));
+  m.items.forEach((it, i) => S.done[i] ? worn[it.g] = colHex(it) : pend.push({g:it.g, i, u:!!S.unl[i]}));
   const used = m.items.filter((_, i) => S.done[i]).map(it => it.c);
-  $('s3').innerHTML = win('Armario.exe — Misión ' + (S.mi + 1) + '/' + missions().length, `
+  $('s3').innerHTML = win('Armario — Misión ' + (S.mi + 1) + '/' + missions().length, `
     <h2 style="font-size:1.35rem;margin:0 0 12px;line-height:1.3">${m.title}</h2>
+    ${pend.some(p => p.u) ? '<p class="hint">✦ ¡Prenda desbloqueada! Arrástrala hasta el personaje (o haz doble clic sobre ella).</p>' : ''}
     <div class="paint">
-      <div class="tools">${m.items.map((it, i) => `
+      <div class="tools"><div class="tg" aria-label="Herramientas decorativas">${['✏️','🪣','🧽','🔍','✨','🖌️'].map(t => `<button onclick="sparkle($('cv'))" aria-hidden="true" tabindex="-1">${t}</button>`).join('')}</div>${m.items.map((it, i) => S.unl[i] && !S.done[i] ? `
+        <div class="bv tool unl" draggable="true" role="button" tabindex="0" data-i="${i}" aria-label="${V(it.g).es} desbloqueada. Arrástrala al personaje o pulsa Enter para vestirla" ondragstart="dStart(event,${i})" ondragend="dEnd()" ondblclick="dress(${i})" onkeydown="if(event.key==='Enter')dress(${i})">
+          <span style="font-size:1.5rem">${V(it.g).icon}</span><span style="flex:1">${V(it.g).es}<br><small>¡Desbloqueada! Arrástrala al personaje</small></span>
+          <span>✨</span></div>` : `
         <button class="bv tool" ${S.done[i] ? 'disabled' : ''} onclick="openChallenge(${i})">
-          <span style="font-size:1.5rem">${V(it.g).icon}</span><span style="flex:1">${V(it.g).es}<br><small>${V(it.c).es}</small></span>
+          <span style="font-size:1.5rem">${V(it.g).icon}</span><span style="flex:1">${V(it.g).es}<br><small>${itCol(it)}</small></span>
           <span>${S.done[i] ? '✅' : '🔒'}</span></button>`).join('')}</div>
-      <div><div id="cv" class="canvas" style="height:min(70vh,440px);padding:8px">${doll(S.g, worn, pend)}</div>
+      <div><div id="cv" class="canvas" style="height:min(70vh,440px);padding:8px">${closet()}<div id="dz">${doll(S.g, worn, pend, S.fresh)}</div></div>
         <div class="pal">${cat('color').map(c => `<span class="${used.includes(c.id) ? 'hit' : ''}" style="background:${c.hex}" title="${c.es}">${used.includes(c.id) ? '✦' : ''}</span>`).join('')}</div></div>
     </div>`);
+  bindDz();
 }
 
+/* ---------- Arrastrar y soltar (mouse + táctil + doble clic) ---------- */
+const T = {i:null, ghost:null, moved:false, sx:0, sy:0, last:0, lastI:null};
+const dzOf = () => $('dz');
+const inDz = (x, y) => { const z = dzOf(); if (!z) return false; const r = z.getBoundingClientRect(), p = 8; return x >= r.left - p && x <= r.right + p && y >= r.top - p && y <= r.bottom + p; };
+function dStart(e, i) { S.drag = i; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', String(i)); const z = dzOf(); if (z) z.classList.add('arm'); }
+function dEnd() { S.drag = null; const z = dzOf(); if (z) z.classList.remove('arm', 'hot'); }
+function bindDz() {
+  S.fresh = null; const z = dzOf(); if (!z) return;
+  z.addEventListener('dragover', e => { if (S.drag == null) return; e.preventDefault(); e.dataTransfer.dropEffect = 'move'; z.classList.add('hot'); });
+  z.addEventListener('dragleave', e => { if (!z.contains(e.relatedTarget)) z.classList.remove('hot'); });
+  z.addEventListener('drop', e => { e.preventDefault(); const i = S.drag, x = e.clientX, y = e.clientY; dEnd(); if (i != null) setTimeout(() => dress(i, x, y)); });
+}
+// Viste al personaje con la prenda desbloqueada i (x,y = punto donde se soltó, opcional)
+function dress(i, x, y) {
+  if (!S.unl[i] || S.done[i]) return;
+  const m = missions()[S.mi]; S.done[i] = true; S.fresh = m.items[i].g; rGame();
+  const cv = $('cv'), r = cv.getBoundingClientRect();
+  if (x == null) sparkle(cv); else sparkle(cv, (x - r.left) + 'px', (y - r.top) + 'px');
+  if (m.items.every((_, k) => S.done[k])) setTimeout(victory, 1100);
+}
+document.addEventListener('touchstart', e => {
+  const el = e.target.closest && e.target.closest('.tool.unl');
+  if (!el || e.touches.length !== 1) return;
+  e.preventDefault(); const t = e.touches[0];
+  Object.assign(T, {i:+el.dataset.i, moved:false, sx:t.clientX, sy:t.clientY});
+}, {passive:false});
+document.addEventListener('touchmove', e => {
+  if (T.i == null) return; e.preventDefault(); const t = e.touches[0];
+  if (!T.moved) {
+    if (Math.hypot(t.clientX - T.sx, t.clientY - T.sy) < 8) return;
+    const it = missions()[S.mi].items[T.i], g = document.createElement('div');
+    T.moved = true; g.className = 'ghost'; g.textContent = V(it.g).icon + ' ' + V(it.g).es; document.body.appendChild(g); T.ghost = g;
+    const z = dzOf(); if (z) z.classList.add('arm');
+  }
+  T.ghost.style.transform = `translate(${t.clientX}px,${t.clientY}px) translate(-50%,-130%)`;
+  const z = dzOf(); if (z) z.classList.toggle('hot', inDz(t.clientX, t.clientY));
+}, {passive:false});
+const tEnd = e => {
+  if (T.i == null) return;
+  const i = T.i, t = e.changedTouches[0], end = e.type === 'touchend', over = end && T.moved && inDz(t.clientX, t.clientY);
+  const tap = end && !T.moved, now = Date.now(), dbl = tap && T.lastI === i && now - T.last < 400;
+  if (T.ghost) T.ghost.remove();
+  T.last = tap && !dbl ? now : 0; T.lastI = i; Object.assign(T, {i:null, ghost:null, moved:false}); dEnd();
+  if (over) dress(i, t.clientX, t.clientY); else if (dbl) dress(i);
+};
+document.addEventListener('touchend', tEnd); document.addEventListener('touchcancel', tEnd);
+
 function openChallenge(i) {
-  if (S.done[i]) return;
+  if (S.done[i] || S.unl[i]) return;
   const it = missions()[S.mi].items[i];
-  S.q = {i, step:0, g:V(it.g), c:V(it.c), lock:false};
+  S.q = {i, step:0, lock:false, t:[V(it.g), V(it.c), ...(it.m ? [V(it.m)] : [])]};   // prenda → color → (tono)
   rModal(); $('ov').classList.add('on');
 }
 function rModal() {
-  const q = S.q, t = q.step ? q.c : q.g;
-  q.opts = shuffle([t, ...shuffle(cat(q.step ? 'color' : 'prenda').filter(x => x.id !== t.id)).slice(0, 2)]);
-  $('ov').innerHTML = `<div style="max-width:640px;width:100%;max-height:94vh;overflow:auto">${win('Reto_LSC.exe — Paso ' + (q.step + 1) + ' de 2', `
-    <h3 style="font-size:1.1rem;margin:0 0 12px;font-family:Montserrat;font-weight:800">${q.step ? 'Paso 2: ¿Cuál es la seña en LSC para el color' : 'Paso 1: ¿Cuál es la seña en LSC para'} “${t.es}”?</h3>
+  const q = S.q, t = q.t[q.step], n = q.t.length;
+  let pool = q.step === 0 ? cat('prenda') : q.step === 1 ? cat('color')
+    : [V(t.id === 'claro' ? 'oscuro' : 'claro'), ...shuffle(cat('extra').filter(x => !['claro','oscuro'].includes(x.id))).slice(0, 1)];
+  q.opts = shuffle([t, ...(q.step < 2 ? shuffle(pool.filter(x => x.id !== t.id)).slice(0, 2) : pool)]);
+  const lead = ['la seña en LSC para', 'la seña en LSC para el color', 'la seña en LSC para el tono'][q.step];
+  $('ov').innerHTML = `<div style="max-width:640px;width:100%;max-height:94vh;overflow:auto">${win('Reto_LSC — Paso ' + (q.step + 1) + ' de ' + n, `
+    <h3 style="font-size:1.1rem;margin:0 0 12px;font-family:Montserrat;font-weight:800">Paso ${q.step + 1}: ¿Cuál es ${lead} “${t.es}”?</h3>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${q.opts.map((o, k) => `
       <button class="opt" onclick="answer('${o.id}',this)">${img(o, 'Opción ' + 'ABC'[k])}<div style="margin-top:6px">${MOSTRAR_PALABRA ? o.es : 'Opción ' + 'ABC'[k]}</div></button>`).join('')}</div>
     <p id="fb" style="font-weight:800;min-height:1.6em;margin:12px 0 0" aria-live="polite"></p>
@@ -275,63 +532,83 @@ function rModal() {
 }
 function answer(id, b) {
   const q = S.q; if (q.lock) return;
-  const t = q.step ? q.c : q.g;
-  if (id !== t.id) { b.classList.add('bad'); b.disabled = true; $('fb').textContent = '✖ Casi. Mira otra vez las señas e inténtalo.'; return; }
-  q.lock = true; b.classList.add('ok'); $('fb').textContent = q.step ? '★ ¡Prenda desbloqueada! ★' : '✦ ¡Correcto! Ahora el color.';
+  const t = q.t[q.step], last = q.step === q.t.length - 1;
+  if (id !== t.id) { b.classList.add('bad'); b.disabled = true; q.bad = true; $('fb').textContent = '✖ Casi. Mira otra vez las señas e inténtalo.'; return; }
+  q.lock = true; b.classList.add('ok'); S.stat.t++; if (!q.bad) S.stat.ok++; q.bad = false;
+  $('fb').textContent = last ? '★ ¡Prenda desbloqueada! Arrástrala al personaje ★' : '✦ ¡Correcto! Sigue con ' + (q.step ? 'el tono.' : 'el color.');
   setTimeout(() => {
-    if (!q.step) { q.step = 1; q.lock = false; rModal(); return; }
-    S.done[q.i] = true; $('ov').classList.remove('on'); rGame(); sparkle($('cv'));
-    if (missions()[S.mi].items.every((_, k) => S.done[k])) setTimeout(victory, 1100);
+    if (!last) { q.step++; q.lock = false; rModal(); return; }
+    S.unl[q.i] = true; $('ov').classList.remove('on'); rGame();
   }, 800);
 }
-function sparkle(el) {
+function sparkle(el, l = '45%', t = '45%') {
   for (let i = 0; i < 16; i++) {
-    const s = document.createElement('span'); s.className = 'star'; s.textContent = '✦★⋆'[i % 3];
-    s.style.cssText = `left:45%;top:45%;--x:${(Math.random() - .5) * 320}px;--y:${(Math.random() - .5) * 360}px`;
+    const s = document.createElement('span'); s.className = 'star'; s.innerHTML = `<img src="${spr(['sp','st','ht'][i % 3], SCOL[i % 4])}" width="22" height="22" alt="">`;
+    s.style.cssText = `left:${l};top:${t};--x:${(Math.random() - .5) * 320}px;--y:${(Math.random() - .5) * 360}px`;
     el.appendChild(s); setTimeout(() => s.remove(), 1000);
   }
 }
 function victory() {
-  const ms = missions(), m = ms[S.mi], worn = {}; m.items.forEach(it => worn[it.g] = V(it.c).hex);
+  const ms = missions(), m = ms[S.mi], worn = {}; m.items.forEach(it => worn[it.g] = colHex(it));
   S.cleared.add(m.i); S.stars++; setStars();
   const last = S.mi === ms.length - 1, all = S.cleared.size >= ms.length;
-  $('ov').innerHTML = `<div style="max-width:420px;width:100%;text-align:center">${win('¡Felicidades!', `
+  $('ov').innerHTML = `<div style="max-width:420px;width:100%;text-align:center;max-height:94vh;overflow:auto">${win('Tus Resultados', `
     <h2 class="bub" style="font-size:2rem;margin:0">✦ ¡Look completado! ✦</h2>
     <div class="canvas" style="width:170px;height:250px;margin:10px auto;padding:6px">${doll(S.g, worn)}</div>
+    ${results(S.stat.ok, S.stat.t)}
     <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
       <button class="bv" onclick="startMission(${S.mi})">↻ Reintentar</button>
-      ${all ? `<button class="bv go" onclick="$('ov').classList.remove('on');show(4)">★ Ronda bonus ★</button>` : ''}
+      ${true ? `<button class="bv go" onclick="$('ov').classList.remove('on');show(4)">★ Ronda bonus ★</button>` : ''}
       ${!last ? `<button class="bv go" onclick="startMission(${S.mi + 1})">Siguiente misión ▶</button>` : ''}
     </div>`)}</div>`;
   $('ov').classList.add('on'); sparkle($('ov').firstChild);
 }
 
-/* ---------- Pantalla 4: Ronda bonus ---------- */
+/* ---------- Pantalla 4: Ronda bonus (alterna Modalidad A y B) ---------- */
 function rBonus() {
-  if (!S.bonus || S.bonus.n >= S.bonus.qs.length) {
-    if (S.bonus) { // resultado final
-      $('s4').innerHTML = win('Resultado.exe', `<h2 class="bub" style="font-size:2rem;margin:0">★ Ronda bonus terminada ★</h2>
-        <p style="font-size:1.3rem;font-weight:800">Ganaste ${S.bonus.pts} de ${S.bonus.qs.length} estrellas extra ✦</p>
-        <button class="bv go" onclick="S.bonus=null;rBonus()">↻ Jugar de nuevo</button> <button class="bv" onclick="show(3)">Volver al armario</button>`);
-      return;
-    }
-    S.bonus = {qs:shuffle(cat('extra')).slice(0, 6), n:0, pts:0, err:false};
+  if (!S.bonus) {
+    const pool = shuffle(BONUS_IDS.map(V));
+    S.bonus = {qs:pool.map((t, k) => ({t, mode:k % 2 ? 'B' : 'A'})), n:0, pts:0, err:false};
   }
-  const b = S.bonus, t = b.qs[b.n];
-  b.opts = shuffle([t, ...shuffle(cat('extra').filter(x => x.id !== t.id)).slice(0, 2)]);
-  $('s4').innerHTML = win('RondaBonus.exe — ' + (b.n + 1) + '/' + b.qs.length, `
-    <h2 style="font-size:1.2rem;margin:0 0 12px;font-weight:800">✦ ¿Cuál es la seña en LSC para “${t.es}”?</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:640px">${b.opts.map((o, k) => `
-      <button class="opt" onclick="ansB('${o.id}',this)">${img(o, 'Opción ' + 'ABC'[k])}<div style="margin-top:6px">${MOSTRAR_PALABRA ? o.es : 'Opción ' + 'ABC'[k]}</div></button>`).join('')}</div>
-    <p id="fb4" style="font-weight:800;min-height:1.6em" aria-live="polite"></p>`);
+  const b = S.bonus;
+  if (b.n >= b.qs.length) {
+    $('s4').innerHTML = win('Tus Resultados', `<h2 class="bub" style="font-size:2rem;margin:0">★ Tus Resultados ★</h2>
+      ${results(b.pts, b.qs.length)}
+      <button class="bv go" onclick="S.bonus=null;rBonus()">↻ Jugar de nuevo</button> <button class="bv" onclick="show(3)">Continuar al armario</button> <button class="bv" onclick="show(1)">Repasar glosario</button>`);
+    return;
+  }
+  const {t, mode} = b.qs[b.n];
+  b.opts = shuffle([t, ...shuffle(BONUS_IDS.map(V).filter(x => x.id !== t.id)).slice(0, 2)]);
+  const head = mode === 'A' ? `✦ Modalidad A · ¿Cuál es la seña en LSC para “${t.es}”?` : '★ Modalidad B · ¿Qué significa esta seña?';
+  const opts = mode === 'A'
+    ? `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:640px">${b.opts.map((o, k) => `<button class="opt" onclick="ansB('${o.id}',this)">${img(o, 'Opción ' + 'ABC'[k])}<div style="margin-top:6px">${MOSTRAR_PALABRA ? o.es : 'Opción ' + 'ABC'[k]}</div></button>`).join('')}</div>`
+    : `<div class="card" style="max-width:230px;margin:0 auto 12px">${img(t, 'Seña en LSC')}</div>
+       <div style="display:grid;gap:8px;max-width:360px;margin:auto">${b.opts.map(o => `<button class="bv" onclick="ansB('${o.id}',this)">${o.es}</button>`).join('')}</div>`;
+  $('s4').innerHTML = win('RondaBonus — ' + (b.n + 1) + '/' + b.qs.length, `<h2 style="font-size:1.15rem;margin:0 0 12px;font-weight:800">${head}</h2>${opts}<p id="fb4" style="font-weight:800;min-height:1.6em;text-align:center" aria-live="polite"></p>`);
 }
 function ansB(id, btn) {
-  const b = S.bonus, t = b.qs[b.n];
+  const b = S.bonus, t = b.qs[b.n].t;
   if (id !== t.id) { btn.classList.add('bad'); btn.disabled = true; b.err = true; $('fb4').textContent = '✖ Casi. Prueba con otra.'; return; }
   btn.classList.add('ok'); $('fb4').textContent = '★ ¡Correcto!';
   if (!b.err) { b.pts++; S.stars++; setStars(); sparkle($('s4')); }
   b.err = false; b.n++; setTimeout(rBonus, 900);
 }
+
+/* ---------- Menú, ayuda, barra de tareas ---------- */
+function resetGame() { if (confirm('¿Reiniciar todo el progreso?')) { S.cleared = new Set(); S.stars = 0; S.bonus = null; S.mi = 0; S.done = []; S.unl = []; show(1); } }
+function helpPop() {
+  $('ov').innerHTML = `<div style="max-width:440px;width:100%">${win('Ayuda', `<p style="margin:0 0 8px;font-weight:700">✦ Aprende las señas en el glosario (toca las tarjetas para voltearlas).<br>★ Elige modelo y entra al armario.<br>⋆ Para desbloquear una prenda acierta su seña, su color y, si lo tiene, su tono (claro u oscuro).<br>👗 Luego arrástrala hasta el personaje para vestirlo (o haz doble clic sobre ella).<br>✦ La ronda bonus está siempre abierta: entra cuando quieras.</p><button class="bv go" onclick="$('ov').classList.remove('on')">Entendido ★</button>`)}</div>`;
+  $('ov').classList.add('on');
+}
+function prog() {
+  const ms = missions(), m = ms[S.mi], n = m && $('s3').classList.contains('on') && !S.cleared.has(m.i) ? m.items.filter((_, i) => S.done[i]).length / m.items.length : 0;
+  $('pg').style.width = Math.round((S.cleared.size + n) / ms.length * 100) + '%';
+  $('tbtxt').textContent = 'Misiones ' + S.cleared.size + '/' + ms.length;
+}
+const clk = () => $('clk').textContent = new Date().toLocaleTimeString('es-CO', {hour:'2-digit', minute:'2-digit'});
+clk(); setInterval(clk, 30000);
+['sp','ht','st','sp','ht','st'].forEach((n, i) => { const e = document.createElement('img'); e.className = 'stk'; e.src = spr(n, SCOL[i % 4]); e.alt = ''; e.setAttribute('aria-hidden', 'true');
+  e.style.cssText = `top:${8 + i * 15}%;${i % 2 ? 'right' : 'left'}:1.5%;animation-delay:${i * .6}s`; document.body.appendChild(e); });
 
 show(1);
 </script>
