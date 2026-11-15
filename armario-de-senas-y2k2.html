@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>✦ Armario de Señas LSC ✦</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#4a1f63;--pk:#ff8fd1;--lil:#b79cff;--pale:#ffe9f7;--lit:#fff;--dk:#a870c4}
+*{box-sizing:border-box}
+body{margin:0;font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background-color:#ffd6f0;
+ background-image:linear-gradient(#ffffff80 1px,transparent 1px),linear-gradient(90deg,#ffffff80 1px,transparent 1px);background-size:18px 18px;min-height:100vh}
+h1,h2,h3,.bub{font-family:'Rubik Bubbles',Montserrat,sans-serif;font-weight:400}
+.wrap{max-width:1000px;margin:0 auto;padding:14px}
+.win{background:var(--pale);border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;box-shadow:5px 5px 0 #8f62b0;margin-bottom:16px}
+.tb{background:linear-gradient(90deg,var(--pk),var(--lil));color:#fff;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;font-weight:800;text-shadow:1px 1px 0 var(--ink)}
+.tb i{font-style:normal;display:flex;gap:4px}.tb i b{background:var(--pale);color:var(--ink);width:18px;height:18px;font-size:11px;text-align:center;border:2px outset #fff;text-shadow:none}
+.body{padding:14px}
+.bv{background:#ffe3f4;color:var(--ink);font:800 .9rem Montserrat,sans-serif;padding:8px 14px;border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;cursor:pointer}
+.bv:active,.bv.on{border-color:var(--dk) #fff #fff var(--dk);background:#e9d6ff}
+.bv:disabled{opacity:.5;cursor:not-allowed}
+.go{background:linear-gradient(#ff9ee0,#c9a6ff);font-size:1.05rem;padding:10px 20px}
+button:focus-visible{outline:3px dashed var(--ink);outline-offset:2px}
+.screen{display:none}.screen.on{display:block;animation:pop .3s}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.card{background:#fff;border:3px solid;border-color:var(--dk) #fff #fff var(--dk);padding:8px;text-align:center}
+.card img,.opt img{width:100%;aspect-ratio:0.56;object-fit:cover;background:#f3e6ff;display:block;image-rendering:auto}
+.sw{display:inline-block;width:26px;height:26px;border:3px solid var(--ink);vertical-align:middle}
+.canvas{background:#fff;background-image:linear-gradient(#f0e0ff 1px,transparent 1px),linear-gradient(90deg,#f0e0ff 1px,transparent 1px);background-size:14px 14px;border:3px solid;border-color:var(--dk) #fff #fff var(--dk);position:relative;overflow:hidden}
+.paint{display:grid;grid-template-columns:190px 1fr;gap:10px}
+@media(max-width:700px){.paint{grid-template-columns:1fr}.tools{flex-direction:row!important;flex-wrap:wrap}}
+.tools{display:flex;flex-direction:column;gap:8px}
+.tool{display:flex;align-items:center;gap:8px;text-align:left;width:100%}
+.tool[disabled]{background:#c9f7dd;opacity:1}
+.sil{fill:#ff8fd133;stroke:#ff4fb8;stroke-width:3;stroke-dasharray:6 5;cursor:pointer;animation:glow 1.4s infinite}
+.worn{stroke:#4a1f63;stroke-width:3;animation:drop .5s cubic-bezier(.3,1.6,.5,1)}
+.pal{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;align-items:center}
+.pal span{width:26px;height:26px;border:2px solid var(--ink);display:grid;place-items:center;font-size:13px;opacity:.55}
+.pal span.hit{opacity:1;outline:3px solid #ff4fb8;outline-offset:1px}
+.opt{background:#fff;border:3px solid;border-color:#fff var(--dk) var(--dk) #fff;padding:6px;cursor:pointer;font:800 .9rem Montserrat;color:var(--ink)}
+.opt.ok{background:#c9f7dd;animation:pop .3s}.opt.bad{background:#ffd0dc;animation:shake .4s}
+.ov{position:fixed;inset:0;background:#4a1f6399;display:none;align-items:center;justify-content:center;padding:12px;z-index:50}
+.ov.on{display:flex}
+.star{position:absolute;pointer-events:none;animation:fly 1s ease-out forwards;color:#ff4fb8;font-size:22px;z-index:5}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@keyframes glow{50%{fill:#ff8fd166}}
+@keyframes drop{from{opacity:0;transform:translateY(-26px)}to{opacity:1;transform:none}}
+@keyframes fly{to{transform:translate(var(--x),var(--y)) rotate(200deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="win"><div class="tb"><span>✦ ArmarioDeSeñas ✦</span><i><b>_</b><b>□</b><b>x</b></i></div>
+    <div class="body flex" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <h1 class="bub" style="font-size:2rem;margin:0">★ Armario de Señas ★</h1>
+      <nav style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="bv" id="n1" onclick="show(1)">1 Aprende</button>
+        <button class="bv" id="n2" onclick="show(2)">2 Modelo</button>
+        <button class="bv" id="n3" onclick="show(3)">3 Armario</button>
+        <button class="bv" id="n4" onclick="show(4)">4 Bonus</button>
+      </nav>
+      <b id="stars">⭐ 0</b>
+    </div>
+  </div>
+  <main><section id="s1" class="screen"></section><section id="s2" class="screen"></section><section id="s3" class="screen"></section><section id="s4" class="screen"></section></main>
+</div>
+<div id="ov" class="ov"></div>
+
+<script>
+/* =====================================================================
+   VOCABULARIO_LSC — todo el vocabulario del PDF (Lección 11)
+   ---------------------------------------------------------------------
+   Pon cada .gif en la carpeta  gifs/  con EXACTAMENTE el nombre indicado
+   en el campo gif. Si el archivo no existe se ve un placeholder con el
+   nombre esperado. No hay que tocar la lógica.
+
+   cat : 'prenda' | 'color' | 'extra'
+   slot: dónde se dibuja (solo prendas que se pueden vestir):
+         top, bottom, full, jacket, neck, shoes, hat
+         (sin slot = solo aparece en glosario)
+   for : 'u' unisex · 'f' mujer · 'm' hombre
+   hex : color con que se pinta (solo cat 'color')
+   ===================================================================== */
+const VOCABULARIO_LSC = [
+  // ---------- PRENDAS (vestibles) ----------
+  {id:'blusa',    es:'Blusa',    cat:'prenda', slot:'top',    for:'f', icon:'👚', gif:'gifs/blusa.gif'},
+  {id:'camisa',   es:'Camisa',   cat:'prenda', slot:'top',    for:'u', icon:'👔', gif:'gifs/camisa.gif'},
+  {id:'camiseta', es:'Camiseta', cat:'prenda', slot:'top',    for:'u', icon:'👕', gif:'gifs/camiseta.gif'},
+  {id:'chaqueta', es:'Chaqueta', cat:'prenda', slot:'jacket', for:'u', icon:'🧥', gif:'gifs/chaqueta.gif'},
+  {id:'corbata',  es:'Corbata',  cat:'prenda', slot:'neck',   for:'m', icon:'🎀', gif:'gifs/corbata.gif'},
+  {id:'falda',    es:'Falda',    cat:'prenda', slot:'bottom', for:'f', icon:'💃', gif:'gifs/falda.gif'},
+  {id:'pantalon', es:'Pantalón', cat:'prenda', slot:'bottom', for:'u', icon:'👖', gif:'gifs/pantalon.gif'},
+  {id:'vestido',  es:'Vestido',  cat:'prenda', slot:'full',   for:'f', icon:'👗', gif:'gifs/vestido.gif'},
+  {id:'sombrero', es:'Sombrero', cat:'prenda', slot:'hat',    for:'u', icon:'👒', gif:'gifs/sombrero.gif'},
+  {id:'zapatos',  es:'Zapatos',  cat:'prenda', slot:'shoes',  for:'u', icon:'👞', gif:'gifs/zapatos.gif'},
+  {id:'zapatos-tenis', es:'Zapatos tenis',    cat:'prenda', slot:'shoes', for:'u', icon:'👟', gif:'gifs/zapatos-tenis.gif'},
+  {id:'zapatos-tacon', es:'Zapatos de tacón', cat:'prenda', slot:'shoes', for:'f', icon:'👠', gif:'gifs/zapatos-tacon.gif'},
+  // ---------- PRENDAS (solo glosario) ----------
+  {id:'brassier',     es:'Brassier',     cat:'prenda', icon:'👙', gif:'gifs/brassier.gif'},
+  {id:'calzones',     es:'Calzones',     cat:'prenda', icon:'🩲', gif:'gifs/calzones.gif'},
+  {id:'correa',       es:'Correa',       cat:'prenda', icon:'➰', gif:'gifs/correa.gif'},
+  {id:'guantes',      es:'Guantes',      cat:'prenda', icon:'🧤', gif:'gifs/guantes.gif'},
+  {id:'medias',       es:'Medias',       cat:'prenda', icon:'🧦', gif:'gifs/medias.gif'},
+  {id:'pantaloncillo',es:'Pantaloncillo',cat:'prenda', icon:'🩳', gif:'gifs/pantaloncillo.gif'},
+  {id:'pantuflas',    es:'Pantuflas',    cat:'prenda', icon:'🥿', gif:'gifs/pantuflas.gif'},
+  {id:'piyama',       es:'Piyama',       cat:'prenda', icon:'🛌', gif:'gifs/piyama.gif'},
+  {id:'ruana',        es:'Ruana',        cat:'prenda', icon:'🧣', gif:'gifs/ruana.gif'},
+  {id:'saco',         es:'Saco',         cat:'prenda', icon:'🧶', gif:'gifs/saco.gif'},
+  {id:'sudadera',     es:'Sudadera',     cat:'prenda', icon:'🏃', gif:'gifs/sudadera.gif'},
+  // ---------- COLORES (se usan en misiones) ----------
+  {id:'amarillo',  es:'Amarillo',  cat:'color', hex:'#FFD93B', gif:'gifs/amarillo.gif'},
+  {id:'anaranjado',es:'Anaranjado',cat:'color', hex:'#FF8A2B', gif:'gifs/anaranjado.gif'},
+  {id:'azul',      es:'Azul',      cat:'color', hex:'#4C8DFF', gif:'gifs/azul.gif'},
+  {id:'blanco',    es:'Blanco',    cat:'color', hex:'#FFFFFF', gif:'gifs/blanco.gif'},
+  {id:'cafe',      es:'Café',      cat:'color', hex:'#8B5A3C', gif:'gifs/cafe.gif'},
+  {id:'gris',      es:'Gris',      cat:'color', hex:'#9A9AA8', gif:'gifs/gris.gif'},
+  {id:'morado',    es:'Morado',    cat:'color', hex:'#9B5CF0', gif:'gifs/morado.gif'},
+  {id:'negro',     es:'Negro',     cat:'color', hex:'#2B2433', gif:'gifs/negro.gif'},
+  {id:'rojo',      es:'Rojo',      cat:'color', hex:'#EE3B4B', gif:'gifs/rojo.gif'},
+  {id:'rosado',    es:'Rosado',    cat:'color', hex:'#FF86C2', gif:'gifs/rosado.gif'},
+  {id:'verde',     es:'Verde',     cat:'color', hex:'#2DB964', gif:'gifs/verde.gif'},
+  // ---------- EXTRAS (ronda bonus) ----------
+  {id:'colores',     es:'Colores',     cat:'extra', icon:'🎨', gif:'gifs/colores.gif'},
+  {id:'colorear',    es:'Colorear',    cat:'extra', icon:'🖍️', gif:'gifs/colorear.gif'},
+  {id:'brillante',   es:'Brillante',   cat:'extra', icon:'✨', gif:'gifs/brillante.gif'},
+  {id:'claro',       es:'Claro',       cat:'extra', icon:'🌤️', gif:'gifs/claro.gif'},
+  {id:'oscuro',      es:'Oscuro',      cat:'extra', icon:'🌑', gif:'gifs/oscuro.gif'},
+  {id:'palido',      es:'Pálido',      cat:'extra', icon:'🤍', gif:'gifs/palido.gif'},
+  {id:'rubio',       es:'Rubio (mono)',cat:'extra', icon:'👱', gif:'gifs/rubio.gif'},
+  {id:'transparente',es:'Transparente',cat:'extra', icon:'🫧', gif:'gifs/transparente.gif'},
+];
+
+/* MISIONES — for: 'u' (ambos) · 'f' (mujer) · 'm' (hombre).  items: prenda + color (ids de arriba) */
+const MISIONES = [
+  {for:'u', title:'Viste al modelo con camisa verde, jean azul y zapatos rojos',
+   items:[{g:'camisa',c:'verde'},{g:'pantalon',c:'azul'},{g:'zapatos',c:'rojo'}]},
+  {for:'u', title:'Día deportivo: camiseta anaranjada, pantalón café y zapatos tenis blancos',
+   items:[{g:'camiseta',c:'anaranjado'},{g:'pantalon',c:'cafe'},{g:'zapatos-tenis',c:'blanco'}]},
+  {for:'f', title:'Viste a la modelo con vestido rosado, zapatos de tacón morados y sombrero amarillo',
+   items:[{g:'vestido',c:'rosado'},{g:'zapatos-tacon',c:'morado'},{g:'sombrero',c:'amarillo'}]},
+  {for:'f', title:'Look de fiesta: blusa amarilla, falda morada y chaqueta negra',
+   items:[{g:'blusa',c:'amarillo'},{g:'falda',c:'morado'},{g:'chaqueta',c:'negro'}]},
+  {for:'m', title:'Look de oficina: camisa blanca, corbata roja, pantalón negro y chaqueta gris',
+   items:[{g:'camisa',c:'blanco'},{g:'corbata',c:'rojo'},{g:'pantalon',c:'negro'},{g:'chaqueta',c:'gris'}]},
+];
+
+// Si es true, las tarjetas de opciones muestran la palabra (da la respuesta). Si false: "Opción A/B/C".
+const MOSTRAR_PALABRA = false;
+
+/* =====================================================================
+   UTILIDADES
+   ===================================================================== */
+const $ = id => document.getElementById(id);
+const V = id => VOCABULARIO_LSC.find(x => x.id === id);
+const cat = c => VOCABULARIO_LSC.filter(x => x.cat === c);
+const shuffle = a => [...a].sort(() => Math.random() - .5);
+const ph = file => 'data:image/svg+xml;utf8,' + encodeURIComponent(
+ `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#f3e6ff"/><rect x="8" y="8" width="184" height="184" fill="none" stroke="#ff8fd1" stroke-width="4" stroke-dasharray="8 6"/><text x="100" y="95" font-size="54" text-anchor="middle">🤟</text><text x="100" y="135" font-size="13" font-family="Montserrat,sans-serif" font-weight="800" text-anchor="middle" fill="#4a1f63">Falta el GIF:</text><text x="100" y="155" font-size="13" font-family="monospace" text-anchor="middle" fill="#a0359b">${file}</text></svg>`);
+const img = (o, alt) => `<img src="${o.gif}" alt="${alt || 'Seña en LSC: ' + o.es}" onerror="this.onerror=null;this.src=ph('${o.gif}')">`;
+const win = (title, body) => `<div class="win"><div class="tb"><span>✦ ${title}</span><i><b>_</b><b>□</b><b>x</b></i></div><div class="body">${body}</div></div>`;
+
+const S = {g:'f', mi:0, done:[], tab:'prenda', q:null, cleared:new Set(), stars:0, bonus:null};
+const missions = () => MISIONES.map((m, i) => ({...m, i})).filter(m => m.for === 'u' || m.for === S.g);
+const setStars = () => $('stars').textContent = '⭐ ' + S.stars;
+
+/* =====================================================================
+   MUÑECOS (SVG estilo dollz pixel) — mujer y hombre
+   ===================================================================== */
+const SH = {
+ camisa:'M62 122 Q100 112 138 122 L172 190 L150 202 L138 172 L138 250 L62 250 L62 172 L50 202 L28 190 Z',
+ camiseta:'M62 122 Q100 112 138 122 L160 160 L142 170 L138 152 L138 250 L62 250 L62 152 L58 170 L40 160 Z',
+ blusa:'M62 122 Q100 112 138 122 L166 176 L146 188 L138 164 L142 240 L58 240 L62 164 L54 188 L34 176 Z',
+ vestido:'M64 122 Q100 112 136 122 L142 180 L172 340 L28 340 L58 180 Z',
+ chaqueta:'M58 120 Q100 108 142 120 L180 202 L156 214 L142 176 L142 262 L58 262 L58 176 L44 214 L20 202 Z M100 116 V262',
+ pantalon:'M62 248 L138 248 L142 372 L106 372 L100 290 L94 372 L58 372 Z',
+ falda:'M62 248 L138 248 L168 335 L32 335 Z',
+ corbata:'M92 120 L108 120 L106 134 L112 190 L100 204 L88 190 L94 134 Z',
+ sombrero:'M30 58 Q100 38 170 58 Q100 76 30 58 Z M62 54 Q64 4 100 4 Q136 4 138 54 Z',
+ zapatos:'M46 372 H102 V392 H40 Q40 374 46 372 Z M98 372 H154 Q160 374 160 392 H98 Z',
+ 'zapatos-tenis':'M46 372 H102 V392 H38 Q38 374 46 372 Z M98 372 H154 Q162 374 162 392 H98 Z M38 388 H162',
+ 'zapatos-tacon':'M52 372 H98 L96 392 H92 L90 384 H52 Z M102 372 H148 L148 384 H110 L108 392 H104 Z',
+};
+const ORDER = ['bottom','top','full','jacket','neck','shoes','hat'];
+const SKIN = {f:'#FFD6BC', m:'#F0BE98'};
+
+function doll(g, worn = {}, pend = []) {
+  const s = SKIN[g], h = g === 'f' ? '#8a3d9e' : '#3b2418', o = '#4a1f63';
+  let x = `<svg viewBox="0 0 200 400" shape-rendering="crispEdges" role="img" aria-label="Modelo ${g === 'f' ? 'mujer' : 'hombre'}" style="width:100%;height:100%">`;
+  if (g === 'f') x += `<rect x="52" y="34" width="96" height="130" rx="14" fill="${h}" stroke="${o}" stroke-width="3"/>`;
+  x += `<g stroke="${o}" stroke-width="3" fill="${s}"><path d="M64 130 L36 196 M136 130 L164 196" stroke="${s}" stroke-width="20" stroke-linecap="square"/>
+   <path d="M82 250 L80 372 M118 250 L120 372" stroke="${s}" stroke-width="26"/>
+   <rect x="64" y="118" width="72" height="134" rx="${g==='f'?22:8}"/><rect x="90" y="100" width="20" height="24"/>
+   <rect x="64" y="236" width="72" height="16" fill="#ffc2e8"/><circle cx="100" cy="70" r="38"/></g>`;
+  x += g === 'f'
+    ? `<path d="M60 74 Q58 28 100 28 Q142 28 140 74 Q130 46 100 46 Q70 46 60 74Z" fill="${h}" stroke="${o}" stroke-width="3"/><path d="M92 90 Q100 98 108 90" stroke="#ff4fb8" stroke-width="5" fill="none"/>`
+    : `<path d="M62 66 Q62 26 100 26 Q138 26 138 66 Q124 44 100 44 Q76 44 62 66Z" fill="${h}" stroke="${o}" stroke-width="3"/><path d="M92 90 Q100 96 108 90" stroke="${o}" stroke-width="4" fill="none"/><path d="M80 64 h14 M106 64 h14" stroke="${o}" stroke-width="4"/>`;
+  x += `<rect x="85" y="71" width="6" height="8" fill="${o}"/><rect x="109" y="71" width="6" height="8" fill="${o}"/>`;
+  [...Object.keys(worn).map(k => ({k, w:1})), ...pend.map(p => ({k:p.g, i:p.i}))]
+   .sort((a, b) => ORDER.indexOf(V(a.k).slot) - ORDER.indexOf(V(b.k).slot))
+   .forEach(e => x += e.w
+     ? `<path d="${SH[e.k]}" fill="${worn[e.k]}" class="worn"/>`
+     : `<path d="${SH[e.k]}" class="sil" onclick="openChallenge(${e.i})"/>`);
+  return x + '</svg>';
+}
+
+/* =====================================================================
+   NAVEGACIÓN
+   ===================================================================== */
+function show(n) {
+  [1,2,3,4].forEach(i => { $('s'+i).classList.toggle('on', i === n); $('n'+i).classList.toggle('on', i === n); });
+  $('n4').disabled = S.cleared.size < missions().length;
+  ({1:rLearn, 2:rModel, 3:rGame, 4:rBonus})[n](); setStars();
+  scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ---------- Pantalla 1: Aprende ---------- */
+function rLearn() {
+  const tabs = {prenda:'Prendas', color:'Colores', extra:'Conceptos extra'};
+  $('s1').innerHTML = win('Glosario_LSC', `
+    <h2 class="bub" style="font-size:1.8rem;margin:0 0 10px">⋆ Aprende las señas ⋆</h2>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">${Object.entries(tabs).map(([k, v]) => `<button class="bv ${S.tab===k?'on':''}" onclick="S.tab='${k}';rLearn()">${v}</button>`).join('')}</div>
+    <div class="grid">${cat(S.tab).map(o => `<article class="card">${img(o)}<div style="margin-top:6px;font-weight:800">
+      ${o.hex ? `<span class="sw" style="background:${o.hex}"></span>` : o.icon} ${o.es}</div></article>`).join('')}</div>
+    <p style="text-align:right;margin:14px 0 0"><button class="bv go" onclick="show(2)">★ Elegir modelo ★</button></p>`);
+}
+
+/* ---------- Pantalla 2: Modelo ---------- */
+function rModel() {
+  $('s2').innerHTML = win('EligeModelo.exe', `
+    <h2 class="bub" style="font-size:1.8rem;margin:0 0 10px">✦ Elige tu modelo ✦</h2>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+    ${[['f','Mujer'],['m','Hombre']].map(([g, n]) => `
+      <button class="bv ${S.g===g?'on':''}" style="padding:12px" onclick="pickG('${g}')" aria-pressed="${S.g===g}">
+        <div class="canvas" style="width:180px;height:260px;padding:8px">${doll(g)}</div><div class="bub" style="font-size:1.4rem;margin-top:6px">${n}</div></button>`).join('')}
+    </div><p style="text-align:center;margin:14px 0 0"><button class="bv go" onclick="startMission(0)">★ ¡Ir al armario! ★</button></p>`);
+}
+function pickG(g) { if (S.g !== g) { S.g = g; S.cleared = new Set(); } rModel(); }
+
+/* ---------- Pantalla 3: Armario y misiones ---------- */
+function startMission(k) { S.mi = k; S.done = []; $('ov').classList.remove('on'); show(3); }
+
+function rGame() {
+  const m = missions()[S.mi], worn = {}, pend = [];
+  m.items.forEach((it, i) => S.done[i] ? worn[it.g] = V(it.c).hex : pend.push({g:it.g, i}));
+  const used = m.items.filter((_, i) => S.done[i]).map(it => it.c);
+  $('s3').innerHTML = win('Armario.exe — Misión ' + (S.mi + 1) + '/' + missions().length, `
+    <h2 style="font-size:1.35rem;margin:0 0 12px;line-height:1.3">${m.title}</h2>
+    <div class="paint">
+      <div class="tools">${m.items.map((it, i) => `
+        <button class="bv tool" ${S.done[i] ? 'disabled' : ''} onclick="openChallenge(${i})">
+          <span style="font-size:1.5rem">${V(it.g).icon}</span><span style="flex:1">${V(it.g).es}<br><small>${V(it.c).es}</small></span>
+          <span>${S.done[i] ? '✅' : '🔒'}</span></button>`).join('')}</div>
+      <div><div id="cv" class="canvas" style="height:min(70vh,440px);padding:8px">${doll(S.g, worn, pend)}</div>
+        <div class="pal">${cat('color').map(c => `<span class="${used.includes(c.id) ? 'hit' : ''}" style="background:${c.hex}" title="${c.es}">${used.includes(c.id) ? '✦' : ''}</span>`).join('')}</div></div>
+    </div>`);
+}
+
+function openChallenge(i) {
+  if (S.done[i]) return;
+  const it = missions()[S.mi].items[i];
+  S.q = {i, step:0, g:V(it.g), c:V(it.c), lock:false};
+  rModal(); $('ov').classList.add('on');
+}
+function rModal() {
+  const q = S.q, t = q.step ? q.c : q.g;
+  q.opts = shuffle([t, ...shuffle(cat(q.step ? 'color' : 'prenda').filter(x => x.id !== t.id)).slice(0, 2)]);
+  $('ov').innerHTML = `<div style="max-width:640px;width:100%;max-height:94vh;overflow:auto">${win('Reto_LSC.exe — Paso ' + (q.step + 1) + ' de 2', `
+    <h3 style="font-size:1.1rem;margin:0 0 12px;font-family:Montserrat;font-weight:800">${q.step ? 'Paso 2: ¿Cuál es la seña en LSC para el color' : 'Paso 1: ¿Cuál es la seña en LSC para'} “${t.es}”?</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${q.opts.map((o, k) => `
+      <button class="opt" onclick="answer('${o.id}',this)">${img(o, 'Opción ' + 'ABC'[k])}<div style="margin-top:6px">${MOSTRAR_PALABRA ? o.es : 'Opción ' + 'ABC'[k]}</div></button>`).join('')}</div>
+    <p id="fb" style="font-weight:800;min-height:1.6em;margin:12px 0 0" aria-live="polite"></p>
+    <button class="bv" onclick="$('ov').classList.remove('on')">Cerrar</button>`)}</div>`;
+}
+function answer(id, b) {
+  const q = S.q; if (q.lock) return;
+  const t = q.step ? q.c : q.g;
+  if (id !== t.id) { b.classList.add('bad'); b.disabled = true; $('fb').textContent = '✖ Casi. Mira otra vez las señas e inténtalo.'; return; }
+  q.lock = true; b.classList.add('ok'); $('fb').textContent = q.step ? '★ ¡Prenda desbloqueada! ★' : '✦ ¡Correcto! Ahora el color.';
+  setTimeout(() => {
+    if (!q.step) { q.step = 1; q.lock = false; rModal(); return; }
+    S.done[q.i] = true; $('ov').classList.remove('on'); rGame(); sparkle($('cv'));
+    if (missions()[S.mi].items.every((_, k) => S.done[k])) setTimeout(victory, 1100);
+  }, 800);
+}
+function sparkle(el) {
+  for (let i = 0; i < 16; i++) {
+    const s = document.createElement('span'); s.className = 'star'; s.textContent = '✦★⋆'[i % 3];
+    s.style.cssText = `left:45%;top:45%;--x:${(Math.random() - .5) * 320}px;--y:${(Math.random() - .5) * 360}px`;
+    el.appendChild(s); setTimeout(() => s.remove(), 1000);
+  }
+}
+function victory() {
+  const ms = missions(), m = ms[S.mi], worn = {}; m.items.forEach(it => worn[it.g] = V(it.c).hex);
+  S.cleared.add(m.i); S.stars++; setStars();
+  const last = S.mi === ms.length - 1, all = S.cleared.size >= ms.length;
+  $('ov').innerHTML = `<div style="max-width:420px;width:100%;text-align:center">${win('¡Felicidades!', `
+    <h2 class="bub" style="font-size:2rem;margin:0">✦ ¡Look completado! ✦</h2>
+    <div class="canvas" style="width:170px;height:250px;margin:10px auto;padding:6px">${doll(S.g, worn)}</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button class="bv" onclick="startMission(${S.mi})">↻ Reintentar</button>
+      ${all ? `<button class="bv go" onclick="$('ov').classList.remove('on');show(4)">★ Ronda bonus ★</button>` : ''}
+      ${!last ? `<button class="bv go" onclick="startMission(${S.mi + 1})">Siguiente misión ▶</button>` : ''}
+    </div>`)}</div>`;
+  $('ov').classList.add('on'); sparkle($('ov').firstChild);
+}
+
+/* ---------- Pantalla 4: Ronda bonus ---------- */
+function rBonus() {
+  if (!S.bonus || S.bonus.n >= S.bonus.qs.length) {
+    if (S.bonus) { // resultado final
+      $('s4').innerHTML = win('Resultado.exe', `<h2 class="bub" style="font-size:2rem;margin:0">★ Ronda bonus terminada ★</h2>
+        <p style="font-size:1.3rem;font-weight:800">Ganaste ${S.bonus.pts} de ${S.bonus.qs.length} estrellas extra ✦</p>
+        <button class="bv go" onclick="S.bonus=null;rBonus()">↻ Jugar de nuevo</button> <button class="bv" onclick="show(3)">Volver al armario</button>`);
+      return;
+    }
+    S.bonus = {qs:shuffle(cat('extra')).slice(0, 6), n:0, pts:0, err:false};
+  }
+  const b = S.bonus, t = b.qs[b.n];
+  b.opts = shuffle([t, ...shuffle(cat('extra').filter(x => x.id !== t.id)).slice(0, 2)]);
+  $('s4').innerHTML = win('RondaBonus.exe — ' + (b.n + 1) + '/' + b.qs.length, `
+    <h2 style="font-size:1.2rem;margin:0 0 12px;font-weight:800">✦ ¿Cuál es la seña en LSC para “${t.es}”?</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:640px">${b.opts.map((o, k) => `
+      <button class="opt" onclick="ansB('${o.id}',this)">${img(o, 'Opción ' + 'ABC'[k])}<div style="margin-top:6px">${MOSTRAR_PALABRA ? o.es : 'Opción ' + 'ABC'[k]}</div></button>`).join('')}</div>
+    <p id="fb4" style="font-weight:800;min-height:1.6em" aria-live="polite"></p>`);
+}
+function ansB(id, btn) {
+  const b = S.bonus, t = b.qs[b.n];
+  if (id !== t.id) { btn.classList.add('bad'); btn.disabled = true; b.err = true; $('fb4').textContent = '✖ Casi. Prueba con otra.'; return; }
+  btn.classList.add('ok'); $('fb4').textContent = '★ ¡Correcto!';
+  if (!b.err) { b.pts++; S.stars++; setStars(); sparkle($('s4')); }
+  b.err = false; b.n++; setTimeout(rBonus, 900);
+}
+
+show(1);
+</script>
+</body>
+</html>
